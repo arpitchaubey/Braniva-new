@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         let meetingLink = ""; // Initialize meetingLink
 
         // If it's a meeting request, generate the Google Calendar Event FIRST
-        if (lead_type === 'meeting' && meeting_date && meeting_time) {
+        if (meeting_date && meeting_time) {
             const calendarId = process.env.GOOGLE_CALENDAR_ID;
             if (calendarId) {
                 try {
