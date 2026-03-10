@@ -2,7 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, BarChart3, Globe, LineChart, Mail, MessageSquare, ShoppingCart, Target } from "lucide-react";
+import { ArrowRight, BarChart3, Globe, LineChart, Mail, MessageSquare, ShoppingCart, Target, Megaphone, Truck, Palette } from "lucide-react";
 
 export default function Home() {
   const containerVariants: Variants = {
@@ -43,97 +43,123 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center w-full">
       {/* HERO SECTION */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-16">
-        <motion.div
-          className="flex-1 flex flex-col items-start"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1F1F1F] border border-[#1ABC9C]/30 text-[#1ABC9C] text-sm font-medium mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#1ABC9C] animate-pulse"></span>
-            Premium Digital Agency
+      <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden py-20 lg:py-32 border-b border-[#1F1F1F]">
+        {/* Animated Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Subtle noise overlay for texture */}
+          <div className="absolute inset-0 bg-[#0a0a0c] z-0"></div>
+
+          {/* Animated Gradient Orbs */}
+          <motion.div
+            className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#1ABC9C]/15 rounded-full blur-[120px] mix-blend-screen"
+            animate={{
+              x: [0, 100, 0, -100, 0],
+              y: [0, 50, 100, -50, 0],
+              scale: [1, 1.2, 0.8, 1.1, 1]
+            }}
+            transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-[-10%] right-[-10%] w-[45vw] h-[45vw] bg-[#0F3D3E]/40 rounded-full blur-[120px] mix-blend-screen"
+            animate={{
+              x: [0, -120, 0, 80, 0],
+              y: [0, -80, 60, 20, 0],
+              scale: [1, 0.9, 1.3, 0.9, 1]
+            }}
+            transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Core Spotlight */}
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[#1ABC9C]/5 rounded-full blur-[150px] opacity-80"
+            animate={{ opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Perspective Grid Lines */}
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)',
+              backgroundSize: '4rem 4rem',
+              maskImage: 'radial-gradient(ellipse 60% 60% at 50% 0%, #000 20%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 0%, #000 20%, transparent 100%)'
+            }}
+          ></div>
+        </div>
+
+        <div className="w-full max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+          <motion.div
+            className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[#E4E4E7] text-xs md:text-sm font-medium tracking-wide mb-8 shadow-xl"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1ABC9C] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1ABC9C]"></span>
+            </span>
+            Premium Digital Growth Agency
           </motion.div>
-          <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-bold text-white font-sora leading-tight mb-6">
-            From Launch to Scale We Handle Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1ABC9C] to-[#0F3D3E]">Digital Growth</span>
+
+          <motion.h1
+            className="text-5xl md:text-7xl lg:text-8xl font-black text-white font-sora leading-[1.1] mb-8 tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
+            Scale Your Brand <br className="hidden md:block" />
+            <span className="relative whitespace-nowrap">
+              <span className="absolute -inset-1 bg-gradient-to-r from-[#1ABC9C]/20 to-[#0F3D3E]/20 blur-xl"></span>
+              <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-white via-[#1ABC9C] to-[#0F3D3E]">Beyond Limits</span>
+            </span>
           </motion.h1>
-          <motion.p variants={itemVariants} className="text-lg text-[#B0B0B0] mb-10 max-w-2xl leading-relaxed">
-            We help brands launch, optimize, and grow their online presence while driving sales through strategic digital marketing.
+
+          <motion.p
+            className="text-lg md:text-xl text-[#A1A1AA] mb-12 max-w-2xl leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            We partner with ambitious founders to engineer explosive growth. From high-converting websites to data-driven marketing domination.
           </motion.p>
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
-            <Link href="/schedule" className="px-8 py-4 rounded-full bg-[#0F3D3E] text-white font-medium hover:bg-[#1ABC9C] transition-all shadow-[0_0_20px_rgba(26,188,156,0.2)] hover:shadow-[0_0_30px_rgba(26,188,156,0.4)]">
-              Schedule a Free Call
+
+          <motion.div
+            className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <Link href="/schedule" className="w-full sm:w-auto px-10 py-5 rounded-full bg-[#1ABC9C] text-[#052222] font-bold text-lg hover:bg-[#1dd3af] transition-all shadow-[0_0_20px_rgba(26,188,156,0.2)] hover:shadow-[0_0_40px_rgba(26,188,156,0.4)] flex items-center justify-center gap-3 group">
+              Schedule Free Strategy Call
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/contact" className="px-8 py-4 rounded-full bg-[#1F1F1F] text-white font-medium hover:bg-[#2a2a2a] transition-all border border-[#333]">
-              Start Your Project
+            <Link href="/services" className="w-full sm:w-auto px-10 py-5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white font-medium text-lg hover:bg-white/10 transition-all flex items-center justify-center group">
+              Explore Our Services
             </Link>
           </motion.div>
-        </motion.div>
 
-        {/* Animated Dashboard Visual */}
-        <motion.div
-          className="flex-1 w-full relative h-[400px] lg:h-[500px] border border-[#1F1F1F] rounded-2xl bg-[#121212]/50 backdrop-blur-sm overflow-hidden"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F3D3E]/20 to-transparent"></div>
-          {/* Dashboard Header */}
-          <div className="h-12 border-b border-[#1F1F1F] flex items-center px-4 gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-          </div>
-
-          <div className="p-6 flex flex-col gap-6">
-            {/* Sales Card */}
-            <motion.div
-              className="bg-[#1F1F1F] rounded-xl p-5 border border-[#333] flex items-center justify-between"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div>
-                <p className="text-sm text-[#B0B0B0] mb-1">Total Revenue</p>
-                <h3 className="text-2xl font-bold text-white font-sora">$124,500</h3>
-              </div>
-              <div className="w-12 h-12 rounded-full bg-[#1ABC9C]/20 flex items-center justify-center">
-                <LineChart className="text-[#1ABC9C]" />
-              </div>
-            </motion.div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <motion.div
-                className="bg-[#1F1F1F] rounded-xl p-4 border border-[#333]"
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <ShoppingCart className="text-white w-5 h-5" />
-                  <span className="text-[#B0B0B0] text-sm">Amazon Sales</span>
-                </div>
-                <div className="h-2 w-full bg-[#121212] rounded-full overflow-hidden">
-                  <div className="h-full bg-[#1ABC9C] w-[75%]"></div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="bg-[#1F1F1F] rounded-xl p-4 border border-[#333]"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <Target className="text-white w-5 h-5" />
-                  <span className="text-[#B0B0B0] text-sm">Conversion</span>
-                </div>
-                <div className="h-2 w-full bg-[#121212] rounded-full overflow-hidden">
-                  <div className="h-full bg-[#1ABC9C] w-[88%]"></div>
-                </div>
-              </motion.div>
+          {/* Social Proof / Trusted By */}
+          <motion.div
+            className="mt-24 pt-10 w-full max-w-4xl relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            <div className="absolute top-10 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#333] to-transparent -z-10"></div>
+            <p className="text-xs text-[#888] font-bold mb-8 uppercase tracking-[0.2em] inline-block bg-[#0a0a0c] px-6">
+              Delivering Results Across Platforms
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+              <span className="text-2xl font-bold font-sora tracking-tighter">amazon</span>
+              <span className="text-2xl font-bold font-sora tracking-tight">Flipkart<span className="text-[#FFC200]">.</span></span>
+              <span className="text-2xl font-extrabold font-sora text-[#95bf47]">shopify</span>
+              <span className="text-2xl font-bold font-sora tracking-tighter text-[#0668E1]">Meta</span>
+              <span className="text-2xl font-bold font-sora text-[#4285F4]">Google</span>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
-
       {/* SERVICES SECTION */}
       <section className="w-full bg-[#1F1F1F]/30 py-24 border-y border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6">
@@ -143,30 +169,40 @@ export default function Home() {
           </div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="flex flex-wrap justify-center gap-6"
             variants={scrollContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
           >
             {[
-              { icon: <ShoppingCart />, title: "Marketplace Setup & Onboarding", desc: "Complete seller account setup and launch support for Amazon, Flipkart, and more." },
-              { icon: <BarChart3 />, title: "Product Listing Optimization", desc: "SEO-optimized listings designed to improve search visibility and conversion rates." },
-              { icon: <Mail />, title: "Email Marketing Automation", desc: "Strategic automated journeys that nurture leads and strengthen customer relationships." },
-              { icon: <MessageSquare />, title: "WhatsApp Marketing Campaigns", desc: "Targeted broadcast promotions and automated messaging to improve retention." },
-              { icon: <Globe />, title: "Website Design & Development", desc: "Custom business websites designed to improve credibility and convert visitors." },
-              { icon: <LineChart />, title: "E-commerce Growth Strategy", desc: "Data-driven strategies to improve product visibility and accelerate sales." },
+              { id: "marketplace", icon: <ShoppingCart />, title: "Marketplace Setup & Onboarding", desc: "Complete seller account setup and launch support for Amazon, Flipkart, Nykaa, Ajio, Tata Cliq, Aza, Pernia, Sverve, and more." },
+              { id: "marketing", icon: <Megaphone />, title: "Marketing Strategy", desc: "Comprehensive campaigns across Google Ads, Meta Ads, Performance Marketing, and Influencer channels." },
+              { id: "logistics", icon: <Truck />, title: "Logistics Onboarding", desc: "Seamless shipping integration with top partners like DTDC, Shiprocket, and Delhivery." },
+              { id: "listing", icon: <BarChart3 />, title: "Product Listing Optimization", desc: "SEO-optimized listings designed to improve search visibility and conversion rates." },
+              { id: "email", icon: <Mail />, title: "Email Marketing Automation", desc: "Strategic automated journeys that nurture leads and strengthen customer relationships." },
+              { id: "whatsapp", icon: <MessageSquare />, title: "WhatsApp Marketing Campaigns", desc: "Targeted broadcast promotions and automated messaging to improve retention." },
+              { id: "web", icon: <Globe />, title: "Website Design & Development", desc: "Custom business websites designed to improve credibility and convert visitors." },
+              { id: "brand-identity", icon: <Palette />, title: "Brand Identity", desc: "Crafting memorable visual identities and guidelines that resonate with your target audience and stand out in the market." },
             ].map((service, i) => (
               <motion.div
                 key={i}
-                className="group p-8 rounded-2xl bg-[#121212] border border-[#1F1F1F] hover:border-[#1ABC9C]/50 transition-colors"
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] group relative p-8 rounded-2xl bg-gradient-to-b from-[#1A1A1A] to-[#0A0A0A] border border-white/5 hover:border-[#1ABC9C]/30 transition-all duration-500 overflow-hidden hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(26,188,156,0.2)]"
                 variants={scrollItemVariants}
               >
-                <div className="w-14 h-14 rounded-xl bg-[#0F3D3E]/30 flex items-center justify-center text-[#1ABC9C] mb-6 group-hover:scale-110 transition-transform">
+                <Link href={`/services#${service.id}`} className="absolute inset-0 z-20"></Link>
+                {/* Highlight Glow from Top */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[#1ABC9C]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1ABC9C]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+                <div className="relative z-10 w-16 h-16 rounded-xl bg-[#1ABC9C]/10 border border-[#1ABC9C]/20 flex items-center justify-center text-[#1ABC9C] mb-6 group-hover:scale-110 group-hover:bg-[#1ABC9C]/20 transition-all duration-500 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#1ABC9C]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 font-sora">{service.title}</h3>
-                <p className="text-[#B0B0B0] leading-relaxed">{service.desc}</p>
+                <h3 className="relative z-10 text-xl font-bold text-white mb-3 font-sora tracking-tight">{service.title}</h3>
+                <p className="relative z-10 text-[#A1A1AA] leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
           </motion.div>

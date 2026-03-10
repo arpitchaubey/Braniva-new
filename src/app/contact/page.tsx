@@ -1,12 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
 export default function ContactPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const isSubmitted = localStorage.getItem('braniva_lead_submitted');
+            if (isSubmitted) {
+                setHasSubmitted(true);
+            }
+        }
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -31,7 +41,11 @@ export default function ContactPage() {
             });
 
             if (response.ok) {
+                if (typeof window !== "undefined") {
+                    localStorage.setItem('braniva_lead_submitted', 'true');
+                }
                 setSubmitted(true);
+                setHasSubmitted(true);
             } else {
                 alert('Failed to submit enquiry. Please try again later.');
             }
@@ -113,15 +127,15 @@ export default function ContactPage() {
                 </motion.div>
 
                 <motion.div variants={scrollItemVariants} className="bg-[#1F1F1F]/40 border border-[#333] rounded-3xl p-8 lg:p-12">
-                    {submitted ? (
+                    {(submitted || hasSubmitted) ? (
                         <div className="text-center py-12">
                             <div className="w-16 h-16 bg-[#1ABC9C]/20 text-[#1ABC9C] rounded-full flex items-center justify-center mx-auto mb-6">
                                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-2 font-sora">Enquiry Received!</h3>
-                            <p className="text-[#B0B0B0]">Thank you for reaching out. A member of our team will contact you shortly.</p>
+                            <h3 className="text-2xl font-bold text-white mb-2 font-sora">We're on it!</h3>
+                            <p className="text-[#B0B0B0]">You've already submitted an inquiry with us. A member of our team will contact you shortly.</p>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="flex flex-col gap-6">

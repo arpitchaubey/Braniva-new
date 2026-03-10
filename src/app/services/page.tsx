@@ -6,7 +6,10 @@ import {
     Mail,
     MessageSquare,
     ShoppingCart,
-    MonitorSmartphone
+    MonitorSmartphone,
+    Megaphone,
+    Truck,
+    Palette
 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
@@ -25,10 +28,26 @@ export default function ServicesPage() {
         {
             id: "marketplace",
             title: "Marketplace Setup & Onboarding",
-            subtitle: "Launch Your Brand on Amazon, Flipkart, etc. with Expert Setup",
+            subtitle: "Launch Your Brand on Amazon, Flipkart, Nykaa, Ajio, Tata Cliq, Aza, Pernia, Sverve and more.",
             description: "We help brands establish a strong presence on top e-commerce marketplaces through optimized listings and complete store setup.",
-            features: ["Seller account setup", "Product catalog configuration", "Keyword optimization", "Product images and descriptions editing"],
+            features: ["Seller account setup", "Product catalog configuration", "Keyword optimization", "Platform-specific compliance"],
             icon: <ShoppingCart className="w-12 h-12 text-[#1ABC9C]" />,
+        },
+        {
+            id: "marketing",
+            title: "Marketing",
+            subtitle: "Explosive Growth through Multi-Channel Campaigns",
+            description: "Comprehensive marketing campaigns driving measurable ROI through targeted ad spend and influencer collaborations.",
+            features: ["Google Ads", "Meta Ads", "Performance Marketing", "Influencer Marketing"],
+            icon: <Megaphone className="w-12 h-12 text-[#1ABC9C]" />,
+        },
+        {
+            id: "logistics",
+            title: "Logistics Onboarding",
+            subtitle: "Seamless Shipping and Fulfillment Integration",
+            description: "We streamline your delivery operations by onboarding and integrating top-tier logistics providers for reliable shipping.",
+            features: ["DTDC", "Xpressbees", "Shiprocket", "Delhivery"],
+            icon: <Truck className="w-12 h-12 text-[#1ABC9C]" />,
         },
         {
             id: "listing",
@@ -63,12 +82,12 @@ export default function ServicesPage() {
             icon: <MonitorSmartphone className="w-12 h-12 text-[#1ABC9C]" />,
         },
         {
-            id: "growth",
-            title: "E-commerce Growth Strategy",
-            subtitle: "Data-Driven Scaling for D2C Brands",
-            description: "Data-driven strategies to improve product visibility, optimize marketing performance, and accelerate overall marketplace sales growth.",
-            features: ["Performance auditing", "Advertising strategy", "Inventory planning", "Profitability tracking"],
-            icon: <Building2 className="w-12 h-12 text-[#1ABC9C]" />,
+            id: "brand-identity",
+            title: "Brand Identity",
+            subtitle: "Crafting Memorable and Distinct Brand Experiences",
+            description: "We develop cohesive visual identities, comprehensive brand guidelines, and compelling narratives that resonate with your target audience and differentiate you in the market.",
+            features: ["Logo & Visual Identity", "Brand Guidelines", "Brand Positioning", "Marketing Collateral Design"],
+            icon: <Palette className="w-12 h-12 text-[#1ABC9C]" />,
         }
     ];
 
