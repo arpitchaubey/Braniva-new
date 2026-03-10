@@ -2,7 +2,8 @@
 
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, BarChart3, Globe, LineChart, Mail, MessageSquare, ShoppingCart, Target, Megaphone, Truck, Palette } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { servicesData } from "@/data/servicesData";
 
 export default function Home() {
   const containerVariants: Variants = {
@@ -150,11 +151,14 @@ export default function Home() {
             <p className="text-xs text-[#888] font-bold mb-8 uppercase tracking-[0.2em] inline-block bg-[#0a0a0c] px-6">
               Delivering Results Across Platforms
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+            <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
               <span className="text-2xl font-bold font-sora tracking-tighter">amazon</span>
               <span className="text-2xl font-bold font-sora tracking-tight">Flipkart<span className="text-[#FFC200]">.</span></span>
+              <span className="text-2xl font-bold font-sora tracking-tighter text-[#fc2779]">NYKAA</span>
               <span className="text-2xl font-extrabold font-sora text-[#95bf47]">shopify</span>
+              <span className="text-2xl font-serif tracking-widest text-[#E6CD92]">Aza</span>
               <span className="text-2xl font-bold font-sora tracking-tighter text-[#0668E1]">Meta</span>
+              <span className="text-2xl font-bold font-sora tracking-tighter">TATA CLiQ</span>
               <span className="text-2xl font-bold font-sora text-[#4285F4]">Google</span>
             </div>
           </motion.div>
@@ -163,9 +167,9 @@ export default function Home() {
       {/* SERVICES SECTION */}
       <section className="w-full bg-[#1F1F1F]/30 py-24 border-y border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16 text-center lg:text-left">
+          <div className="mb-16 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white font-sora mb-4">Our Services</h2>
-            <p className="text-[#B0B0B0] max-w-2xl text-lg">We provide end-to-end solutions to establish, optimize, and scale your brand across digital channels.</p>
+            <p className="text-[#B0B0B0] max-w-2xl mx-auto text-lg">We provide end-to-end solutions to establish, optimize, and scale your brand across digital channels.</p>
           </div>
 
           <motion.div
@@ -175,16 +179,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
           >
-            {[
-              { id: "marketplace", icon: <ShoppingCart />, title: "Marketplace Setup & Onboarding", desc: "Complete seller account setup and launch support for Amazon, Flipkart, Nykaa, Ajio, Tata Cliq, Aza, Pernia, Sverve, and more." },
-              { id: "marketing", icon: <Megaphone />, title: "Marketing Strategy", desc: "Comprehensive campaigns across Google Ads, Meta Ads, Performance Marketing, and Influencer channels." },
-              { id: "logistics", icon: <Truck />, title: "Logistics Onboarding", desc: "Seamless shipping integration with top partners like DTDC, Shiprocket, and Delhivery." },
-              { id: "listing", icon: <BarChart3 />, title: "Product Listing Optimization", desc: "SEO-optimized listings designed to improve search visibility and conversion rates." },
-              { id: "email", icon: <Mail />, title: "Email Marketing Automation", desc: "Strategic automated journeys that nurture leads and strengthen customer relationships." },
-              { id: "whatsapp", icon: <MessageSquare />, title: "WhatsApp Marketing Campaigns", desc: "Targeted broadcast promotions and automated messaging to improve retention." },
-              { id: "web", icon: <Globe />, title: "Website Design & Development", desc: "Custom business websites designed to improve credibility and convert visitors." },
-              { id: "brand-identity", icon: <Palette />, title: "Brand Identity", desc: "Crafting memorable visual identities and guidelines that resonate with your target audience and stand out in the market." },
-            ].map((service, i) => (
+            {servicesData.map((service, i) => (
               <motion.div
                 key={i}
                 className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] group relative p-8 rounded-2xl bg-gradient-to-b from-[#1A1A1A] to-[#0A0A0A] border border-white/5 hover:border-[#1ABC9C]/30 transition-all duration-500 overflow-hidden hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(26,188,156,0.2)]"
@@ -202,7 +197,7 @@ export default function Home() {
                   {service.icon}
                 </div>
                 <h3 className="relative z-10 text-xl font-bold text-white mb-3 font-sora tracking-tight">{service.title}</h3>
-                <p className="relative z-10 text-[#A1A1AA] leading-relaxed">{service.desc}</p>
+                <p className="relative z-10 text-[#A1A1AA] leading-relaxed">{service.shortDesc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -226,11 +221,12 @@ export default function Home() {
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-[#1F1F1F] md:-translate-x-1/2"></div>
 
           {[
-            { num: "1", title: "Business Consultation", desc: "We understand your brand, products, and marketplace goals." },
-            { num: "2", title: "Marketplace Setup", desc: "We configure your seller accounts and product catalog." },
-            { num: "3", title: "Product Listing Optimization", desc: "We create SEO optimized listings." },
-            { num: "4", title: "Marketing Launch", desc: "Email and WhatsApp campaigns start." },
-            { num: "5", title: "Sales Growth & Analytics", desc: "We monitor performance and optimize." }
+            { num: "1", title: "Discovery Consultation", desc: "We begin with a detailed discussion to understand your brand, products, business objectives, and current challenges." },
+            { num: "2", title: "Market & Opportunity Analysis", desc: "Our team evaluates your market position, competitors, and customer demand to identify the best growth opportunities." },
+            { num: "3", title: "Strategic Planning", desc: "We develop a tailored strategy aligned with your brand vision, marketplace goals, and long-term growth potential." },
+            { num: "4", title: "Solution Implementation", desc: "Our team executes the approved strategy, setting up the necessary systems and processes to support your business growth." },
+            { num: "5", title: "Performance Monitoring", desc: "We continuously track performance metrics, analyze results, and identify areas for improvement." },
+            { num: "6", title: "Optimization & Growth Delivery", desc: "We refine strategies based on data insights to maximize results and help your brand achieve sustainable growth." }
           ].map((step, i) => (
             <motion.div
               key={i}

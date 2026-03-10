@@ -12,6 +12,8 @@ import {
     Palette
 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import Link from 'next/link';
+import { servicesData } from "@/data/servicesData";
 
 export default function ServicesPage() {
     const scrollItemVariants: Variants = {
@@ -24,72 +26,7 @@ export default function ServicesPage() {
         }
     };
 
-    const services = [
-        {
-            id: "marketplace",
-            title: "Marketplace Setup & Onboarding",
-            subtitle: "Launch Your Brand on Amazon, Flipkart, Nykaa, Ajio, Tata Cliq, Aza, Pernia, Sverve and more.",
-            description: "We help brands establish a strong presence on top e-commerce marketplaces through optimized listings and complete store setup.",
-            features: ["Seller account setup", "Product catalog configuration", "Keyword optimization", "Platform-specific compliance"],
-            icon: <ShoppingCart className="w-12 h-12 text-[#1ABC9C]" />,
-        },
-        {
-            id: "marketing",
-            title: "Marketing",
-            subtitle: "Explosive Growth through Multi-Channel Campaigns",
-            description: "Comprehensive marketing campaigns driving measurable ROI through targeted ad spend and influencer collaborations.",
-            features: ["Google Ads", "Meta Ads", "Performance Marketing", "Influencer Marketing"],
-            icon: <Megaphone className="w-12 h-12 text-[#1ABC9C]" />,
-        },
-        {
-            id: "logistics",
-            title: "Logistics Onboarding",
-            subtitle: "Seamless Shipping and Fulfillment Integration",
-            description: "We streamline your delivery operations by onboarding and integrating top-tier logistics providers for reliable shipping.",
-            features: ["DTDC", "Xpressbees", "Shiprocket", "Delhivery"],
-            icon: <Truck className="w-12 h-12 text-[#1ABC9C]" />,
-        },
-        {
-            id: "listing",
-            title: "Product Listing Optimization",
-            subtitle: "SEO-Optimized Listings to Increase Visibility and Conversion Rates",
-            description: "Professionally optimized product listings designed to improve marketplace search visibility, attract customers, and increase conversion rates.",
-            features: ["A+ Content creation", "SEO Keyword research", "Competitor listing analysis", "Image enhancement guidelines"],
-            icon: <LineChart className="w-12 h-12 text-[#1ABC9C]" />,
-        },
-        {
-            id: "email",
-            title: "Email Marketing Automation",
-            subtitle: "Nurture Leads and Accelerate Repeat Purchases",
-            description: "Strategic email campaigns and automated customer journeys that nurture leads, increase repeat purchases, and strengthen long-term customer relationships.",
-            features: ["Welcome flow setup", "Cart abandonment recovery", "Post-purchase sequences", "Newsletter campaigns"],
-            icon: <Mail className="w-12 h-12 text-[#1ABC9C]" />,
-        },
-        {
-            id: "whatsapp",
-            title: "WhatsApp Marketing Campaigns",
-            subtitle: "Direct Engagement for Higher Conversions",
-            description: "Direct customer engagement through targeted WhatsApp campaigns, broadcast promotions, and automated messaging to improve conversions and retention.",
-            features: ["Broadcast promotions", "Order status updates", "Support automation", "Customer segmentation"],
-            icon: <MessageSquare className="w-12 h-12 text-[#1ABC9C]" />,
-        },
-        {
-            id: "web",
-            title: "Website Design & Development",
-            subtitle: "Custom E-commerce Websites that Convert",
-            description: "Custom business websites designed to establish a strong online presence, improve credibility, and convert visitors into customers.",
-            features: ["Shopify / Custom setup", "Conversion rate optimization", "Mobile-first design", "Speed optimization"],
-            icon: <MonitorSmartphone className="w-12 h-12 text-[#1ABC9C]" />,
-        },
-        {
-            id: "brand-identity",
-            title: "Brand Identity",
-            subtitle: "Crafting Memorable and Distinct Brand Experiences",
-            description: "We develop cohesive visual identities, comprehensive brand guidelines, and compelling narratives that resonate with your target audience and differentiate you in the market.",
-            features: ["Logo & Visual Identity", "Brand Guidelines", "Brand Positioning", "Marketing Collateral Design"],
-            icon: <Palette className="w-12 h-12 text-[#1ABC9C]" />,
-        }
-    ];
+    const services = servicesData;
 
     return (
         <div className="max-w-7xl mx-auto px-6 py-20">
@@ -122,7 +59,7 @@ export default function ServicesPage() {
                             <h2 className="text-3xl font-bold text-white font-sora mb-2">{svc.title}</h2>
                             <h3 className="text-xl text-[#1ABC9C] font-semibold mb-6">{svc.subtitle}</h3>
                             <p className="text-[#B0B0B0] mb-8 leading-relaxed text-lg">
-                                {svc.description}
+                                {svc.detailedDescription[0]}
                             </p>
 
                             <div className="bg-[#121212] border border-[#1F1F1F] rounded-xl p-6">
@@ -135,6 +72,14 @@ export default function ServicesPage() {
                                         </li>
                                     ))}
                                 </ul>
+                            </div>
+                            <div className="mt-8">
+                                <Link
+                                    href={`/services/${svc.id}`}
+                                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1F1F1F] text-white hover:bg-[#1ABC9C] hover:text-[#0a0a0a] transition-colors border border-[#333] hover:border-[#1ABC9C] font-semibold"
+                                >
+                                    Learn More Details
+                                </Link>
                             </div>
                         </div>
                     </motion.section>

@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MoveRight } from "lucide-react";
+import { MoveRight, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
     return (
-        <footer className="border-t border-[#1F1F1F] bg-[#121212] pt-20 pb-10">
+        <footer className="border-t border-[#1F1F1F] bg-[#0a0a0c] pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                    <div className="col-span-1 md:col-span-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                    {/* Brand Column */}
+                    <div className="lg:col-span-4">
                         <Link href="/" className="inline-flex flex-col items-start gap-4 mb-8 group transition-transform">
                             <div className="relative w-12 h-12 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:-translate-y-1">
                                 <Image src="/logo.png" alt="Braniva Logo" fill className="object-contain" sizes="48px" />
@@ -17,35 +18,76 @@ export default function Footer() {
                                 <span className="w-2 h-2 rounded-full bg-[#1ABC9C] ml-1.5 mb-1.5"></span>
                             </div>
                         </Link>
-                        <p className="text-[#B0B0B0] max-w-sm mb-8 leading-relaxed">
-                            We handle your digital growth from launch to scale. Let us optimize your marketplace presence and marketing automation.
+                        <p className="text-[#B0B0B0] max-w-sm mb-8 leading-relaxed text-sm">
+                            Your end-to-end e-commerce growth partner. From marketplace onboarding and logistics to performance marketing and brand identity — we handle the heavy lifting so you can focus on your product.
                         </p>
-                        <Link href="/schedule" className="inline-flex items-center gap-2 text-[#1ABC9C] font-medium hover:gap-3 transition-all">
+                        <Link href="/schedule" className="inline-flex items-center gap-2 text-[#1ABC9C] font-medium hover:gap-3 transition-all text-sm">
                             Schedule a free consultation <MoveRight className="w-4 h-4" />
                         </Link>
+
+                        {/* Social Icons */}
+                        <div className="flex items-center gap-4 mt-8">
+                            <a href="https://instagram.com/braniva" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
+                                <Instagram className="w-4 h-4" />
+                            </a>
+                            <a href="https://linkedin.com/company/braniva" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
+                                <Linkedin className="w-4 h-4" />
+                            </a>
+                            <a href="https://twitter.com/braniva" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
+                                <Twitter className="w-4 h-4" />
+                            </a>
+                        </div>
                     </div>
 
-                    <div>
-                        <h4 className="text-white font-semibold mb-6">Services</h4>
-                        <ul className="space-y-4 text-[#B0B0B0] text-sm">
+                    {/* Services Column */}
+                    <div className="lg:col-span-3">
+                        <h4 className="text-white font-semibold mb-6 font-sora text-sm uppercase tracking-wider">Services</h4>
+                        <ul className="space-y-3.5 text-[#B0B0B0] text-sm">
                             <li><Link href="/services#marketplace" className="hover:text-[#1ABC9C] transition-colors">Marketplace Onboarding</Link></li>
+                            <li><Link href="/services#marketing" className="hover:text-[#1ABC9C] transition-colors">Marketing Strategy</Link></li>
+                            <li><Link href="/services#logistics" className="hover:text-[#1ABC9C] transition-colors">Logistics Onboarding</Link></li>
                             <li><Link href="/services#listing" className="hover:text-[#1ABC9C] transition-colors">Listing Optimization</Link></li>
                             <li><Link href="/services#email" className="hover:text-[#1ABC9C] transition-colors">Email Automation</Link></li>
                             <li><Link href="/services#whatsapp" className="hover:text-[#1ABC9C] transition-colors">WhatsApp Marketing</Link></li>
+                            <li><Link href="/services#web" className="hover:text-[#1ABC9C] transition-colors">Website Development</Link></li>
+                            <li><Link href="/services#brand-identity" className="hover:text-[#1ABC9C] transition-colors">Brand Identity</Link></li>
                         </ul>
                     </div>
 
-                    <div>
-                        <h4 className="text-white font-semibold mb-6">Company</h4>
-                        <ul className="space-y-4 text-[#B0B0B0] text-sm">
+                    {/* Company Column */}
+                    <div className="lg:col-span-2">
+                        <h4 className="text-white font-semibold mb-6 font-sora text-sm uppercase tracking-wider">Company</h4>
+                        <ul className="space-y-3.5 text-[#B0B0B0] text-sm">
                             <li><Link href="/about" className="hover:text-[#1ABC9C] transition-colors">About Us</Link></li>
+                            <li><Link href="/services" className="hover:text-[#1ABC9C] transition-colors">All Services</Link></li>
                             <li><Link href="/case-studies" className="hover:text-[#1ABC9C] transition-colors">Case Studies</Link></li>
+                            <li><Link href="/schedule" className="hover:text-[#1ABC9C] transition-colors">Book a Call</Link></li>
                             <li><Link href="/contact" className="hover:text-[#1ABC9C] transition-colors">Contact</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Contact Column */}
+                    <div className="lg:col-span-3">
+                        <h4 className="text-white font-semibold mb-6 font-sora text-sm uppercase tracking-wider">Get in Touch</h4>
+                        <ul className="space-y-4 text-[#B0B0B0] text-sm">
+                            <li className="flex items-start gap-3">
+                                <Mail className="w-4 h-4 mt-0.5 text-[#1ABC9C] shrink-0" />
+                                <a href="mailto:hello@braniva.com" className="hover:text-[#1ABC9C] transition-colors">hello@braniva.com</a>
+                            </li>
+                            <li className="flex items-start gap-3">
+                                <Phone className="w-4 h-4 mt-0.5 text-[#1ABC9C] shrink-0" />
+                                <a href="tel:+919999999999" className="hover:text-[#1ABC9C] transition-colors">+91 99999 99999</a>
+                            </li>
+                            <li className="flex items-start gap-3">
+                                <MapPin className="w-4 h-4 mt-0.5 text-[#1ABC9C] shrink-0" />
+                                <span>New Delhi, India</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-[#1F1F1F] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#B0B0B0]">
+                {/* Bottom Bar */}
+                <div className="pt-8 border-t border-[#1F1F1F] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#666]">
                     <p>© {new Date().getFullYear()} Braniva. All rights reserved.</p>
                     <div className="flex items-center gap-6">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
