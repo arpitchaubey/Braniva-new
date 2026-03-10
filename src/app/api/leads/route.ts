@@ -45,8 +45,9 @@ export async function POST(req: Request) {
             try {
                 const resend = new Resend(process.env.RESEND_API_KEY);
 
+                console.log("Attempting to send Internal Notification email...");
                 // Email to the Site Owner (Internal Notification)
-                await resend.emails.send({
+                const internalEmailResponse = await resend.emails.send({
                     from: 'Braniva Alerts <info@braniva.in>', // Using verified domain
                     to: process.env.CONTACT_EMAIL,
                     subject: `New Lead: ${name} (${lead_type})`,
@@ -62,9 +63,11 @@ export async function POST(req: Request) {
                         <p><strong>Meeting Requested:</strong> ${meeting_date ? `${meeting_date} at ${meeting_time}` : 'No'}</p>
                     `
                 });
+                console.log("Internal Email Response:", internalEmailResponse);
 
+                console.log("Attempting to send Client Auto-reply email to:", email);
                 // Auto-reply Email to the Client (External Confirmation)
-                await resend.emails.send({
+                const clientEmailResponse = await resend.emails.send({
                     from: 'Braniva <info@braniva.in>', // Using verified domain
                     to: email, // Send to the user's submitted email
                     subject: `Thank you for contacting Braniva, ${name}!`,
@@ -75,10 +78,13 @@ export async function POST(req: Request) {
                         <p>Best regards,<br/>The Braniva Team</p>
                     `
                 });
+                console.log("Client Email Response:", clientEmailResponse);
 
             } catch (emailError) {
-                console.error("Failed to send email notification:", emailError);
+                console.error("Failed to send email notification (Exception caught):", emailError);
             }
+        } else {
+            console.log("Skipping Resend: RESEND_API_KEY or CONTACT_EMAIL missing.");
         }
 
         // 3. Append to Google Sheets (if configured)
