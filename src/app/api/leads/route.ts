@@ -44,8 +44,10 @@ export async function POST(req: Request) {
         if (process.env.RESEND_API_KEY && process.env.CONTACT_EMAIL) {
             try {
                 const resend = new Resend(process.env.RESEND_API_KEY);
+
+                // Email to the Site Owner (Internal Notification)
                 await resend.emails.send({
-                    from: 'Acme <onboarding@resend.dev>', // Needs to be updated to a verified domain in production
+                    from: 'Braniva Alerts <info@braniva.in>', // Using verified domain
                     to: process.env.CONTACT_EMAIL,
                     subject: `New Lead: ${name} (${lead_type})`,
                     html: `
@@ -60,6 +62,20 @@ export async function POST(req: Request) {
                         <p><strong>Meeting Requested:</strong> ${meeting_date ? `${meeting_date} at ${meeting_time}` : 'No'}</p>
                     `
                 });
+
+                // Auto-reply Email to the Client (External Confirmation)
+                await resend.emails.send({
+                    from: 'Braniva <info@braniva.in>', // Using verified domain
+                    to: email, // Send to the user's submitted email
+                    subject: `Thank you for contacting Braniva, ${name}!`,
+                    html: `
+                        <h2>Hello ${name},</h2>
+                        <p>Thank you for reaching out to Braniva! We have received your inquiry regarding <strong>${lead_type}</strong>.</p>
+                        <p>One of our growth specialists will review your details and get back to you shortly.</p>
+                        <p>Best regards,<br/>The Braniva Team</p>
+                    `
+                });
+
             } catch (emailError) {
                 console.error("Failed to send email notification:", emailError);
             }
@@ -84,6 +100,17 @@ export async function POST(req: Request) {
                 await doc.loadInfo();
 
                 const sheet = doc.sheetsByIndex[0]; // Assuming we append to the first tab
+
+                try {
+                    await sheet.loadHeaderRow();
+                } catch (e) {
+                    // If no headers exist, set them up on the first row
+                    await sheet.setHeaderRow([
+                        'Date', 'LeadType', 'Name', 'Email', 'Phone',
+                        'BusinessType', 'CompanyName', 'MeetingDate', 'MeetingTime', 'Message'
+                    ]);
+                }
+
                 await sheet.addRow({
                     Date: new Date().toLocaleDateString(),
                     LeadType: lead_type,
