@@ -118,7 +118,7 @@ export default function SchedulePage() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    lead_type: 'Strategy Call Booking',
+                    lead_type: 'Consultation Call Booking',
                     name: formData.name,
                     email: formData.email,
                     phone: formData.phone,

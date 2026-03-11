@@ -64,7 +64,7 @@ export async function POST(req: Request) {
                     if (process.env.GOOGLE_WORKSPACE_ADMIN_EMAIL) {
                         try {
                             const eventPayload = {
-                                summary: `Strategy Call: ${name} / Braniva`,
+                                summary: `Consultation Call: ${name} / Braniva`,
                                 description: `Lead Type: ${business_type}\nCompany: ${company_name}\nPhone: ${phone}\nEmail: ${email}`,
                                 start: {
                                     dateTime: startDateTime.toISOString(),
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
                     } else {
                         // Fallback behavior if Domain Wide Delegation Admin email isn't configured
                         const eventPayload = {
-                            summary: `Strategy Call: ${name} / Braniva (Pending Meet Link)`,
+                            summary: `Consultation Call: ${name} / Braniva (Pending Meet Link)`,
                             description: `Lead Type: ${business_type}\nCompany: ${company_name}\nPhone: ${phone}\nEmail: ${email}`,
                             start: {
                                 dateTime: startDateTime.toISOString(),
@@ -244,7 +244,7 @@ export async function POST(req: Request) {
                                 </p>
                                 ${meeting_date ? `
                                 <div style="background-color: #0F3D3E; padding: 20px; border-radius: 8px; margin-bottom: 24px; border: 1px solid #1ABC9C; text-align: center;">
-                                    <p style="color: #FFFFFF; margin-top: 0; font-weight: 600; font-size: 18px;">✅ Your Strategy Call is Confirmed</p>
+                                    <p style="color: #FFFFFF; margin-top: 0; font-weight: 600; font-size: 18px;">✅ Your Consultation Call is Confirmed</p>
                                     <p style="color: #B0B0B0; margin-bottom: 16px;">${meeting_date} at ${meeting_time} IST</p>
                                     ${meetingLink ? `<a href="${meetingLink}" style="background-color: #1ABC9C; color: #121212; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;">Join Google Meet</a>` : `<p style="color: #B0B0B0; font-size: 13px; margin: 0;">Our team will share the meeting link with you shortly.</p>`}
                                 </div>

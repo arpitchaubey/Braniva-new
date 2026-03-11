@@ -59,7 +59,7 @@ export default function ServicesPage() {
                             <h2 className="text-3xl font-bold text-white font-sora mb-2">{svc.title}</h2>
                             <h3 className="text-xl text-[#1ABC9C] font-semibold mb-6">{svc.subtitle}</h3>
                             <p className="text-[#B0B0B0] mb-8 leading-relaxed text-lg">
-                                {svc.detailedDescription[0]}
+                                {svc.detailedDescription?.[0] || ""}
                             </p>
 
                             <div className="bg-[#121212] border border-[#1F1F1F] rounded-xl p-6">

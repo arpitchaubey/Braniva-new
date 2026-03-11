@@ -7,7 +7,8 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function ServiceDetailPage() {
-    const { slug } = useParams();
+    const params = useParams();
+    const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
 
     const service = servicesData.find((s) => s.id === slug);
 
@@ -122,12 +123,12 @@ export default function ServiceDetailPage() {
                 >
                     <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-[#1ABC9C] rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
                     <h2 className="text-3xl font-bold font-sora mb-4 text-white relative z-10">Ready to accelerate your growth?</h2>
-                    <p className="text-[#B0B0B0] mb-8 text-lg relative z-10">Schedule a free strategy call today to discuss how our {service.title} service can scale your brand.</p>
+                    <p className="text-[#B0B0B0] mb-8 text-lg relative z-10">Schedule a free consultation call today to discuss how our {service.title} service can scale your brand.</p>
                     <Link
                         href="/schedule"
                         className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#1ABC9C] text-[#052222] font-bold text-lg hover:bg-[#1dd3af] transition-all shadow-[0_0_20px_rgba(26,188,156,0.2)] hover:shadow-[0_0_40px_rgba(26,188,156,0.4)] relative z-10 group"
                     >
-                        Schedule Free Strategy Call
+                        Schedule Free Consultation Call
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </motion.div>

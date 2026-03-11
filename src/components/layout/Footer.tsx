@@ -27,13 +27,13 @@ export default function Footer() {
 
                         {/* Social Icons */}
                         <div className="flex items-center gap-4 mt-8">
-                            <a href="https://instagram.com/braniva" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
+                            <a href="https://instagram.com/braniva" target="_blank" rel="noopener noreferrer" aria-label="Braniva on Instagram" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
                                 <Instagram className="w-4 h-4" />
                             </a>
-                            <a href="https://linkedin.com/company/braniva" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
+                            <a href="https://linkedin.com/company/braniva" target="_blank" rel="noopener noreferrer" aria-label="Braniva on LinkedIn" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
                                 <Linkedin className="w-4 h-4" />
                             </a>
-                            <a href="https://twitter.com/braniva" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
+                            <a href="https://twitter.com/braniva" target="_blank" rel="noopener noreferrer" aria-label="Braniva on Twitter" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
                                 <Twitter className="w-4 h-4" />
                             </a>
                         </div>

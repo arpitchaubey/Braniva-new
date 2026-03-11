@@ -132,7 +132,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <Link href="/schedule" className="w-full sm:w-auto px-10 py-5 rounded-full bg-[#1ABC9C] text-[#052222] font-bold text-lg hover:bg-[#1dd3af] transition-all shadow-[0_0_20px_rgba(26,188,156,0.2)] hover:shadow-[0_0_40px_rgba(26,188,156,0.4)] flex items-center justify-center gap-3 group">
-              Schedule Free Strategy Call
+              Schedule Free Consultation Call
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link href="/services" className="w-full sm:w-auto px-10 py-5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white font-medium text-lg hover:bg-white/10 transition-all flex items-center justify-center group">
@@ -140,28 +140,7 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* Social Proof / Trusted By */}
-          <motion.div
-            className="mt-24 pt-10 w-full max-w-4xl relative"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            <div className="absolute top-10 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#333] to-transparent -z-10"></div>
-            <p className="text-xs text-[#888] font-bold mb-8 uppercase tracking-[0.2em] inline-block bg-[#0a0a0c] px-6">
-              Delivering Results Across Platforms
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-              <span className="text-2xl font-bold font-sora tracking-tighter">amazon</span>
-              <span className="text-2xl font-bold font-sora tracking-tight">Flipkart<span className="text-[#FFC200]">.</span></span>
-              <span className="text-2xl font-bold font-sora tracking-tighter text-[#fc2779]">NYKAA</span>
-              <span className="text-2xl font-extrabold font-sora text-[#95bf47]">shopify</span>
-              <span className="text-2xl font-serif tracking-widest text-[#E6CD92]">Aza</span>
-              <span className="text-2xl font-bold font-sora tracking-tighter text-[#0668E1]">Meta</span>
-              <span className="text-2xl font-bold font-sora tracking-tighter">TATA CLiQ</span>
-              <span className="text-2xl font-bold font-sora text-[#4285F4]">Google</span>
-            </div>
-          </motion.div>
+
         </div>
       </section>
       {/* SERVICES SECTION */}
@@ -181,11 +160,11 @@ export default function Home() {
           >
             {servicesData.map((service, i) => (
               <motion.div
-                key={i}
+                key={service.id}
                 className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] group relative p-8 rounded-2xl bg-gradient-to-b from-[#1A1A1A] to-[#0A0A0A] border border-white/5 hover:border-[#1ABC9C]/30 transition-all duration-500 overflow-hidden hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(26,188,156,0.2)]"
                 variants={scrollItemVariants}
               >
-                <Link href={`/services#${service.id}`} className="absolute inset-0 z-20"></Link>
+                <Link href={`/services#${service.id}`} className="absolute inset-0 z-20" aria-label={`View details about our ${service.title} service`}></Link>
                 {/* Highlight Glow from Top */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[#1ABC9C]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -199,6 +178,41 @@ export default function Home() {
                 <h3 className="relative z-10 text-xl font-bold text-white mb-3 font-sora tracking-tight">{service.title}</h3>
                 <p className="relative z-10 text-[#A1A1AA] leading-relaxed">{service.shortDesc}</p>
               </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* PLATFORMS MARQUEE SECTION */}
+      <section className="w-full bg-[#121212] py-24 border-y border-[#1F1F1F] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+          <p className="text-[#1ABC9C] font-bold tracking-widest uppercase text-sm mb-4">Ecosystem Experts</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white font-sora">Platforms & Brands We Work With</h2>
+        </div>
+        <div className="relative flex overflow-hidden group w-full py-4 max-w-full">
+          <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-[#121212] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#121212] to-transparent z-10 pointer-events-none"></div>
+
+          <motion.div
+            className="flex flex-none items-center gap-24 whitespace-nowrap px-12"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 35 }}
+          >
+            {[...Array(2)].map((_, idx) => (
+              <span key={idx} className="flex items-center gap-24">
+                <span className="text-3xl md:text-5xl font-bold font-sora tracking-tighter opacity-60 hover:opacity-100 hover:text-white transition-all duration-300">amazon</span>
+                <span className="text-3xl md:text-5xl font-bold font-sora tracking-tight opacity-60 hover:opacity-100 hover:text-white transition-all duration-300">Flipkart<span className="text-[#FFC200]">.</span></span>
+                <span className="text-3xl md:text-5xl font-bold font-sora tracking-tighter text-[#fc2779] opacity-60 hover:opacity-100 transition-all duration-300">NYKAA</span>
+                <span className="text-3xl md:text-5xl font-extrabold font-sora text-[#95bf47] opacity-60 hover:opacity-100 transition-all duration-300">shopify</span>
+                <span className="text-3xl md:text-5xl font-bold font-sora tracking-tighter opacity-60 hover:opacity-100 hover:text-white transition-all duration-300">Myntra</span>
+                <span className="text-3xl md:text-5xl font-bold font-sora tracking-tighter opacity-60 hover:opacity-100 hover:text-white transition-all duration-300">AJIO</span>
+                <span className="text-3xl md:text-5xl font-bold font-sora tracking-tighter opacity-60 hover:opacity-100 hover:text-white transition-all duration-300">Blinkit</span>
+                <span className="text-3xl md:text-5xl font-serif tracking-widest text-[#E6CD92] opacity-60 hover:opacity-100 transition-all duration-300">Aza</span>
+                <span className="text-3xl md:text-5xl font-bold font-sora tracking-tighter text-[#0668E1] opacity-60 hover:opacity-100 transition-all duration-300">Meta</span>
+                <span className="text-3xl md:text-5xl font-bold text-white font-sora tracking-tight opacity-60 hover:opacity-100 transition-all duration-300 backdrop-blur-md">WordPress</span>
+                <span className="text-3xl md:text-5xl font-bold font-sora tracking-tighter opacity-60 hover:opacity-100 hover:text-white transition-all duration-300">TATA CLiQ</span>
+                <span className="text-3xl md:text-5xl font-bold font-sora text-[#4285F4] opacity-60 hover:opacity-100 transition-all duration-300">Google</span>
+              </span>
             ))}
           </motion.div>
         </div>
@@ -244,6 +258,7 @@ export default function Home() {
           ))}
         </motion.div>
       </section>
+
 
       {/* RESULTS SECTION */}
       <section className="w-full bg-[#1ABC9C] py-20 text-[#0F3D3E]">
