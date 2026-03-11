@@ -11,13 +11,13 @@ export default function Navbar() {
     return (
         <header className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/80 backdrop-blur-md border-b border-[#1F1F1F]">
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <Link href="/" className="flex items-end gap-3 group transition-transform h-12 mt-1" onClick={() => setIsMobileMenuOpen(false)}>
-                    <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
-                        <Image src="/logo.png" alt="Braniva Logo" fill className="object-contain object-bottom" sizes="40px" />
+                <Link href="/" className="flex items-end gap-3 group transition-transform" onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="relative w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-105">
+                        <Image src="/logo.png" alt="Braniva Logo" fill className="object-contain" sizes="40px" />
                     </div>
-                    <div className="flex items-baseline pb-1">
+                    <div className="flex items-baseline mb-0.5">
                         <span className="text-xl md:text-2xl font-bold font-sora text-white tracking-wide leading-none">Braniva</span>
-                        <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#1ABC9C] ml-1 mb-0.5"></span>
+                        <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#1ABC9C] ml-1"></span>
                     </div>
                 </Link>
 

@@ -27,14 +27,14 @@ export default function Footer() {
 
                         {/* Social Icons */}
                         <div className="flex items-center gap-4 mt-8">
-                            <a href="https://instagram.com/braniva" target="_blank" rel="noopener noreferrer" aria-label="Braniva on Instagram" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
-                                <Instagram className="w-4 h-4" />
+                            <a href="https://www.instagram.com/braniva.in" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center hover:bg-[#1ABC9C] transition-colors" aria-label="Braniva on Instagram">
+                                <Instagram className="w-5 h-5 text-white" />
                             </a>
-                            <a href="https://linkedin.com/company/braniva" target="_blank" rel="noopener noreferrer" aria-label="Braniva on LinkedIn" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
-                                <Linkedin className="w-4 h-4" />
+                            <a href="https://www.linkedin.com/company/braniva/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center hover:bg-[#1ABC9C] transition-colors" aria-label="Braniva on LinkedIn">
+                                <Linkedin className="w-5 h-5 text-white" />
                             </a>
-                            <a href="https://twitter.com/braniva" target="_blank" rel="noopener noreferrer" aria-label="Braniva on Twitter" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#B0B0B0] hover:text-[#1ABC9C] hover:border-[#1ABC9C]/30 transition-all">
-                                <Twitter className="w-4 h-4" />
+                            <a href="https://x.com/_braniva" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center hover:bg-[#1ABC9C] transition-colors" aria-label="Braniva on Twitter">
+                                <Twitter className="w-5 h-5 text-white" />
                             </a>
                         </div>
                     </div>

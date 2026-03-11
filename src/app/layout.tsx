@@ -4,6 +4,8 @@ import "./globals.css";
 import AnimatedBackground from "@/components/backgrounds/AnimatedBackground";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,14 +35,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${sora.variable} antialiased min-h-screen flex flex-col relative`}
+        className={`${inter.variable} ${sora.variable} antialiased min-h-screen flex flex-col bg-[#0A0A0A] text-white`}
       >
         <AnimatedBackground />
         <Navbar />
-        <main className="flex-1 pt-20">
+        <main className="flex-grow z-10 relative mt-20">
           {children}
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
