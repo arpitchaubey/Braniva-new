@@ -32,8 +32,8 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: 'Calendar ID is not configured' }, { status: 500 });
         }
 
-        // Define our business hours boundary (e.g. 10 AM to 5 PM)
-        const startOfDay = new Date(`${dateStr}T10:00:00+05:30`);
+        // Define our business hours boundary (12:30 PM to 5 PM)
+        const startOfDay = new Date(`${dateStr}T12:30:00+05:30`);
         const endOfDay = new Date(`${dateStr}T17:00:00+05:30`);
 
         // Get FreeBusy status

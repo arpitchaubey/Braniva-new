@@ -24,9 +24,14 @@ export default function SchedulePage() {
     useEffect(() => {
         setMounted(true);
         if (typeof window !== "undefined") {
-            const submitted = localStorage.getItem('braniva_lead_submitted');
-            if (submitted) {
-                setHasSubmitted(true);
+            const submittedAt = localStorage.getItem('braniva_lead_submitted');
+            if (submittedAt) {
+                const elapsed = Date.now() - parseInt(submittedAt, 10);
+                if (elapsed < 20 * 60 * 1000) {
+                    setHasSubmitted(true);
+                } else {
+                    localStorage.removeItem('braniva_lead_submitted');
+                }
             }
         }
     }, []);
@@ -132,7 +137,7 @@ export default function SchedulePage() {
             });
             if (response.ok) {
                 if (typeof window !== "undefined") {
-                    localStorage.setItem('braniva_lead_submitted', 'true');
+                    localStorage.setItem('braniva_lead_submitted', Date.now().toString());
                 }
                 setStep("success");
                 setHasSubmitted(true);

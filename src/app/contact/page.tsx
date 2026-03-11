@@ -11,9 +11,14 @@ export default function ContactPage() {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const isSubmitted = localStorage.getItem('braniva_lead_submitted');
-            if (isSubmitted) {
-                setHasSubmitted(true);
+            const submittedAt = localStorage.getItem('braniva_lead_submitted');
+            if (submittedAt) {
+                const elapsed = Date.now() - parseInt(submittedAt, 10);
+                if (elapsed < 20 * 60 * 1000) {
+                    setHasSubmitted(true);
+                } else {
+                    localStorage.removeItem('braniva_lead_submitted');
+                }
             }
         }
     }, []);
@@ -42,7 +47,7 @@ export default function ContactPage() {
 
             if (response.ok) {
                 if (typeof window !== "undefined") {
-                    localStorage.setItem('braniva_lead_submitted', 'true');
+                    localStorage.setItem('braniva_lead_submitted', Date.now().toString());
                 }
                 setSubmitted(true);
                 setHasSubmitted(true);

@@ -166,8 +166,8 @@ export async function POST(req: Request) {
                         <div style="max-width: 600px; margin: 0 auto; background-color: #1F1F1F; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5); border: 1px solid #0F3D3E;">
                             <div style="background-color: #0F3D3E; padding: 20px 30px; text-align: center; border-bottom: 2px solid #1ABC9C;">
                                 <img src="https://raw.githubusercontent.com/arpitchaubey/Braniva-new/main/public/logo.png" alt="Braniva" style="height: 48px; margin-bottom: 10px; display: inline-block;">
-                                <h1 style="margin: 0; font-size: 24px; color: #FFFFFF; font-family: 'Sora', 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.025em; line-height: 1; display: flex; align-items: baseline; justify-content: center;">
-                                    Braniva<span style="display: inline-block; width: 6px; height: 6px; background-color: #1ABC9C; border-radius: 50%; margin-left: 4px;"></span>
+                                <h1 style="margin: 0; font-size: 24px; color: #FFFFFF; font-family: 'Sora', 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.025em; line-height: 1; text-align: center;">
+                                    Braniva<span style="display: inline-block; width: 6px; height: 6px; background-color: #1ABC9C; border-radius: 50%; margin-left: 4px; vertical-align: middle;"></span>
                                 </h1>
                                 <p style="margin: 5px 0 0 0; color: #B0B0B0; font-size: 14px;">New Lead Submission</p>
                             </div>
@@ -233,8 +233,8 @@ export async function POST(req: Request) {
                         <div style="max-width: 600px; margin: 0 auto; background-color: #1F1F1F; border: 1px solid #0F3D3E; border-radius: 12px; overflow: hidden; text-align: left; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);">
                             <div style="padding: 40px 30px 30px; border-bottom: 1px solid #333333; text-align: center; background-color: #0F3D3E;">
                                 <img src="https://raw.githubusercontent.com/arpitchaubey/Braniva-new/main/public/logo.png" alt="Braniva Logo" style="height: 48px; margin-bottom: 10px; display: block;">
-                                <h1 style="margin: 0; font-family: 'Sora', 'Poppins', sans-serif; font-size: 32px; color: #FFFFFF; font-weight: 700; letter-spacing: 0.025em; line-height: 1; display: flex; align-items: baseline; justify-content: center;">
-                                    Braniva<span style="display: inline-block; width: 8px; height: 8px; background-color: #1ABC9C; border-radius: 50%; margin-left: 4px;"></span>
+                                <h1 style="margin: 0; font-family: 'Sora', 'Poppins', sans-serif; font-size: 32px; color: #FFFFFF; font-weight: 700; letter-spacing: 0.025em; line-height: 1; text-align: center;">
+                                    Braniva<span style="display: inline-block; width: 8px; height: 8px; background-color: #1ABC9C; border-radius: 50%; margin-left: 4px; vertical-align: middle;"></span>
                                 </h1>
                             </div>
                             <div style="padding: 40px 30px;">
