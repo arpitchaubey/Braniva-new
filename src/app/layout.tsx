@@ -16,8 +16,13 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Braniva | Digital Growth & Real Marketing",
+  title: "Braniva | Scale Your Brand Beyond Limits",
   description: "We help brands launch, optimize, and grow their online presence while driving sales through strategic digital marketing.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

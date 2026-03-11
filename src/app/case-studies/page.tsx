@@ -23,25 +23,6 @@ export default function CaseStudiesPage() {
         }
     };
 
-    const caseStudies = [
-        {
-            client: "Fashion Accessories Brand",
-            industry: "Apparel & E-commerce",
-            challenge: "The brand suffered from low marketplace visibility, generic listings, and poor conversion rates compared to competitors.",
-            solution: "We performed a complete overhaul of their Amazon and Flipkart listings, injecting high-volume keywords, optimizing A+ content, and automating their email retention campaigns.",
-            result: "Achieved 3x sales growth within 3 months and increased returning customer rate by 30%.",
-            metrics: ["3x Sales", "30% Retained", "Top 10 Category"]
-        },
-        {
-            client: "D2C Skincare Startup",
-            industry: "Beauty & Personal Care",
-            challenge: "High cart abandonment rates and low return-on-ad-spend (ROAS) hindering scalability.",
-            solution: "Implemented a robust WhatsApp and Email marketing automation funnel targeting abandoned carts and upselling complementary products to existing customers.",
-            result: "Recovered 25% of abandoned carts, directly adding 40% higher baseline monthly revenue.",
-            metrics: ["25% Recovery", "40% Rev Growth", "2.5x ROAS"]
-        }
-    ];
-
     return (
         <div className="max-w-7xl mx-auto px-6 py-20">
             <motion.div
@@ -57,54 +38,111 @@ export default function CaseStudiesPage() {
             </motion.div>
 
             <motion.div
-                className="grid gap-12"
                 variants={scrollContainerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
             >
-                {caseStudies.map((study, idx) => (
-                    <motion.div
-                        key={idx}
-                        variants={scrollItemVariants}
-                        className="bg-[#1F1F1F]/40 border border-[#1F1F1F] rounded-3xl p-8 lg:p-12 hover:border-[#0F3D3E] transition-all"
-                    >
-                        <div className="flex flex-col lg:flex-row gap-12">
-                            <div className="lg:w-1/3">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121212] border border-[#333] text-[#1ABC9C] text-sm font-medium mb-6">
-                                    {study.industry}
+                <motion.div
+                    variants={scrollItemVariants}
+                    className="bg-[#1A1A1A] border border-[#333] rounded-3xl p-8 lg:p-12 shadow-xl"
+                >
+                    <div className="mb-12 border-b border-[#333] pb-10">
+                        <span className="text-[#1ABC9C] font-semibold text-sm tracking-wider uppercase mb-4 block">
+                            Manufacturing & E-commerce
+                        </span>
+
+                        <h2 className="text-3xl lg:text-5xl font-bold text-white font-sora mb-10 leading-tight">Case Study: A.K Industries</h2>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+                            <div className="bg-[#121212] p-8 rounded-xl border border-[#333] h-full">
+                                <h3 className="text-xl font-bold text-white mb-4">Client Overview</h3>
+                                <p className="text-[#B0B0B0] leading-relaxed text-lg">
+                                    A.K Industries is a manufacturing company seeking to expand its product reach by entering major e-commerce marketplaces. Their objective was to successfully launch and position their product across leading online platforms in India.
+                                </p>
+                            </div>
+                            <div className="bg-[#121212] p-8 rounded-xl border border-[#333] h-full">
+                                <h3 className="text-xl font-bold text-white mb-4">The Challenge</h3>
+                                <p className="text-[#B0B0B0] leading-relaxed text-lg">
+                                    The client wanted to begin selling on platforms such as Amazon, Flipkart, and Meesho but required guidance and execution support for the entire process from product validation to marketplace onboarding and listing optimization.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mb-14">
+                        <h3 className="text-2xl font-bold text-white font-sora mb-8 pb-4 border-b border-[#333]">Our Approach</h3>
+
+                        <div className="space-y-8">
+                            <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
+                                <div className="md:w-1/3 shrink-0">
+                                    <h4 className="text-white font-semibold flex items-center gap-3">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#1ABC9C] block"></span>
+                                        Product Validation
+                                    </h4>
                                 </div>
-                                <h2 className="text-2xl lg:text-3xl font-bold text-white font-sora mb-6">{study.client}</h2>
-                                <div className="flex flex-wrap gap-3">
-                                    {study.metrics.map((metric, i) => (
-                                        <span key={i} className="px-4 py-2 rounded-lg bg-[#0F3D3E]/30 text-white font-semibold text-sm border border-[#0F3D3E]">
-                                            {metric}
-                                        </span>
-                                    ))}
+                                <div className="md:w-2/3">
+                                    <p className="text-[#B0B0B0] leading-relaxed">We first evaluated the product&apos;s quality and assessed its suitability for online marketplaces. This included verifying whether the product met platform standards and had competitive potential in the market.</p>
                                 </div>
                             </div>
 
-                            <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div>
-                                    <h4 className="text-[#B0B0B0] font-medium mb-2 flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 bg-red-400 rounded-full"></span> Challenge
+                            <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
+                                <div className="md:w-1/3 shrink-0">
+                                    <h4 className="text-white font-semibold flex items-center gap-3">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#1ABC9C] block"></span>
+                                        Marketplace Preparation
                                     </h4>
-                                    <p className="text-white leading-relaxed">{study.challenge}</p>
                                 </div>
-                                <div>
-                                    <h4 className="text-[#B0B0B0] font-medium mb-2 flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 bg-[#1ABC9C] rounded-full"></span> Solution
+                                <div className="md:w-2/3">
+                                    <p className="text-[#B0B0B0] leading-relaxed">A structured product data sheet was developed, including specifications, descriptions, and key attributes required for marketplace listings.</p>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
+                                <div className="md:w-1/3 shrink-0">
+                                    <h4 className="text-white font-semibold flex items-center gap-3">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#1ABC9C] block"></span>
+                                        Image Enhancement
                                     </h4>
-                                    <p className="text-white leading-relaxed">{study.solution}</p>
                                 </div>
-                                <div className="md:col-span-2 bg-[#121212] p-6 rounded-xl border border-[#333]">
-                                    <h4 className="text-[#1ABC9C] font-bold mb-2">The Result</h4>
-                                    <p className="text-white text-lg">{study.result}</p>
+                                <div className="md:w-2/3">
+                                    <p className="text-[#B0B0B0] leading-relaxed">Since the original product photos were not optimized for e-commerce, our team enhanced them using AI tools and professional editing software to create high-quality, marketplace-ready visuals.</p>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
+                                <div className="md:w-1/3 shrink-0">
+                                    <h4 className="text-white font-semibold flex items-center gap-3">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#1ABC9C] block"></span>
+                                        Platform Setup
+                                    </h4>
+                                </div>
+                                <div className="md:w-2/3">
+                                    <p className="text-[#B0B0B0] leading-relaxed">We handled the complete onboarding and seller account setup process across Amazon, Flipkart, and Meesho.</p>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
+                                <div className="md:w-1/3 shrink-0">
+                                    <h4 className="text-white font-semibold flex items-center gap-3">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#1ABC9C] block"></span>
+                                        Listing Optimization
+                                    </h4>
+                                </div>
+                                <div className="md:w-2/3">
+                                    <p className="text-[#B0B0B0] leading-relaxed">The product listings were created with optimized titles, descriptions, keywords, and images to improve discoverability and conversion potential.</p>
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
-                ))}
+                    </div>
+
+                    <div className="bg-[#121212] p-8 md:p-10 rounded-2xl border-l-4 border-[#1ABC9C]">
+                        <h4 className="text-white font-bold text-2xl mb-4">Outcome</h4>
+                        <p className="text-[#B0B0B0] text-lg leading-relaxed">
+                            The client was successfully onboarded across three major e-commerce platforms with fully optimized listings and professional product presentation, establishing a strong foundation for their online sales operations.
+                        </p>
+                    </div>
+                </motion.div>
             </motion.div>
 
             <motion.div

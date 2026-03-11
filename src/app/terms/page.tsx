@@ -170,8 +170,8 @@ export default function TermsPage() {
                             </p>
                             <div className="mt-4 p-6 rounded-xl bg-white/5 border border-white/10">
                                 <p className="font-semibold text-white">Braniva</p>
-                                <p>Email: <a href="mailto:hello@braniva.com" className="text-[#1ABC9C] hover:underline">hello@braniva.com</a></p>
-                                <p>Location: New Delhi, India</p>
+                                <p>Email: <a href="mailto:hello@braniva.in" className="text-[#1ABC9C] hover:underline">hello@braniva.in</a></p>
+                                <p>Location: Sector-71, Faridabad, Haryana, 121004, India (We operate as a fully remote team and do not maintain a physical office location.)</p>
                             </div>
                         </div>
                     </div>

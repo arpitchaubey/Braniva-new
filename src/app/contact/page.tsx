@@ -105,7 +105,7 @@ export default function ContactPage() {
                                 <Mail className="w-5 h-5" />
                             </span>
                             <h4 className="text-white font-semibold">Email</h4>
-                            <p className="text-[#B0B0B0]">hello@braniva.com</p>
+                            <p className="text-[#B0B0B0]">hello@braniva.in</p>
                         </div>
 
                         <div className="flex flex-col gap-2">
@@ -113,7 +113,7 @@ export default function ContactPage() {
                                 <Phone className="w-5 h-5" />
                             </span>
                             <h4 className="text-white font-semibold">Phone</h4>
-                            <p className="text-[#B0B0B0]">+1 (555) 123-4567</p>
+                            <p className="text-[#B0B0B0]">+91 7303872329</p>
                         </div>
 
                         <div className="flex flex-col gap-2">
@@ -121,7 +121,7 @@ export default function ContactPage() {
                                 <MapPin className="w-5 h-5" />
                             </span>
                             <h4 className="text-white font-semibold">HQ</h4>
-                            <p className="text-[#B0B0B0]">Global Remote & Delhi, India</p>
+                            <p className="text-[#B0B0B0]">Sector-71, Faridabad, Haryana, 121004, India<br /><span className="text-sm">(We operate as a fully remote team and do not maintain a physical office location.)</span></p>
                         </div>
                     </div>
                 </motion.div>

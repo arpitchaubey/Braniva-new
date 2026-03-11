@@ -81,8 +81,8 @@ Light Grey — #B0B0B0
 ## Typography
 
 Headings
-Sora or Poppins
 
+Sora or Poppins
 Body
 Inter or Manrope
 

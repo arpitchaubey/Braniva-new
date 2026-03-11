@@ -19,7 +19,7 @@ export default function Footer() {
                             </div>
                         </Link>
                         <p className="text-[#B0B0B0] max-w-sm mb-8 leading-relaxed text-sm">
-                            Your end-to-end e-commerce growth partner. From marketplace onboarding and logistics to performance marketing and brand identity — we handle the heavy lifting so you can focus on your product.
+                            Your end-to-end e-commerce growth partner. From marketplace onboarding and logistics to performance marketing and brand identity we handle the heavy lifting so you can focus on your product.
                         </p>
                         <Link href="/schedule" className="inline-flex items-center gap-2 text-[#1ABC9C] font-medium hover:gap-3 transition-all text-sm">
                             Schedule a free consultation <MoveRight className="w-4 h-4" />
@@ -72,15 +72,15 @@ export default function Footer() {
                         <ul className="space-y-4 text-[#B0B0B0] text-sm">
                             <li className="flex items-start gap-3">
                                 <Mail className="w-4 h-4 mt-0.5 text-[#1ABC9C] shrink-0" />
-                                <a href="mailto:hello@braniva.com" className="hover:text-[#1ABC9C] transition-colors">hello@braniva.com</a>
+                                <a href="mailto:hello@braniva.in" className="hover:text-[#1ABC9C] transition-colors">hello@braniva.in</a>
                             </li>
                             <li className="flex items-start gap-3">
                                 <Phone className="w-4 h-4 mt-0.5 text-[#1ABC9C] shrink-0" />
-                                <a href="tel:+919999999999" className="hover:text-[#1ABC9C] transition-colors">+91 99999 99999</a>
+                                <a href="tel:+917303872329" className="hover:text-[#1ABC9C] transition-colors">+91 7303872329</a>
                             </li>
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-4 h-4 mt-0.5 text-[#1ABC9C] shrink-0" />
-                                <span>New Delhi, India</span>
+                                <span>Sector-71, Faridabad, Haryana, 121004, India<br /><span className="text-xs text-[#666]">(We operate as a fully remote team and do not maintain a physical office location.)</span></span>
                             </li>
                         </ul>
                     </div>
