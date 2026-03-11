@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { servicesData } from "@/data/servicesData";
 
-const BASE_URL = "https://braniva.com";
+const BASE_URL = "https://braniva.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticPages: MetadataRoute.Sitemap = [
