@@ -80,7 +80,7 @@ export default function Footer() {
                             </li>
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-4 h-4 mt-0.5 text-[#1ABC9C] shrink-0" />
-                                <span>Sector-71, Faridabad, Haryana, 121004, India<br /><span className="text-xs text-[#666]">(We operate as a fully remote team and do not maintain a physical office location.)</span></span>
+                                <span>H.no-1326, Sector-3, Faridabad, Haryana, 121004, India<br /></span>
                             </li>
                         </ul>
                     </div>
