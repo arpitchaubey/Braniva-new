@@ -33,7 +33,7 @@ export const servicesData: ServiceItem[] = [
         icon: <ShoppingCart className="w-12 h-12 text-[#1ABC9C]" />,
         title: "Marketplace Setup & Onboarding",
         subtitle: "Launch Your Brand on Amazon, Flipkart, Nykaa, Ajio, Tata Cliq, Aza, Pernia, Sverve and more.",
-        shortDesc: "Complete seller account setup and launch support for top marketplaces.",
+        shortDesc: "We handle the setup you didn't know was complicated — variants, category rules, backend keywords, and platform-specific requirements. You won't lose weeks figuring out why your listing got rejected.",
         detailedDescription: [
             "We handle the end-to-end operational heavy lifting required to get your brand live across India's top e-commerce ecosystems, including Amazon, Flipkart, Myntra, Nykaa, Ajio, Tata Cliq, JioMart, Aza, Pernia's Pop-Up Shop, and Sverve.",
             "Our team manages the complexities of brand registry, GTIN exemptions, category gating, and platform-specific compliance. We structure your initial product catalog to meet the exact indexing criteria required by each unique algorithm, ensuring your brand launches smoothly without rejection delays."
@@ -57,7 +57,7 @@ export const servicesData: ServiceItem[] = [
         icon: <Megaphone className="w-12 h-12 text-[#1ABC9C]" />,
         title: "Marketing Strategy",
         subtitle: "Explosive Growth through Multi-Channel Campaigns",
-        shortDesc: "Comprehensive campaigns across Google Ads, Meta Ads, Performance Marketing, and Influencer channels.",
+        shortDesc: "We plan your launches, not just your ads — product drops, seasonal pushes, restocks. A content and ad calendar built around your actual business cycle.",
         detailedDescription: [
             "We deploy high ROI performance marketing architectures utilizing Google Ads (Search, Shopping, Display, Performance Max), Meta Ads (Facebook & Instagram), TikTok Ads, and Programmatic networks like Criteo.",
             "Beyond sheer ad spend, we integrate deeply vetted, niche-specific Influencer Marketing pipelines. By fusing data-driven split-testing with authentic creator social proof, we build sustainable customer acquisition funnels that scale profitably."
@@ -81,7 +81,7 @@ export const servicesData: ServiceItem[] = [
         icon: <Truck className="w-12 h-12 text-[#1ABC9C]" />,
         title: "Logistics Onboarding",
         subtitle: "Seamless Shipping and Fulfillment Integration",
-        shortDesc: "Seamless shipping integration with top partners like DTDC, Shiprocket, and Delhivery.",
+        shortDesc: "Returns, expectations, and trust — set up right from day one. We help new brands build a return and rating strategy that protects credibility before problems start.",
         detailedDescription: [
             "Fulfillment is the backbone of e-commerce. A poor delivery experience will break your brand, regardless of how good the product is. We consult and integrate your technical stack tightly with premium logistics aggregators and carriers.",
             "We facilitate automated integration with top-tier partners including Merchant, DTDC, Shiprocket, Delhivery, Xpressbees, Shadowfax, Blue Dart, and Ecom Express. We focus heavily on minimizing RTOs and automating NDR (Non-Delivery Report) management."
@@ -105,7 +105,7 @@ export const servicesData: ServiceItem[] = [
         icon: <BarChart3 className="w-12 h-12 text-[#1ABC9C]" />,
         title: "Product Listing Optimization",
         subtitle: "SEO-Optimized Listings to Increase Visibility and Conversion Rates",
-        shortDesc: "SEO-optimized listings designed to improve search visibility and conversion rates.",
+        shortDesc: "Listings that look like a real brand. We brief your photos and content to each platform's exact requirements, so your listing builds trust instead of blending into the crowd.",
         detailedDescription: [
             "In marketplace algorithms (like Amazon's A9), visibility equals velocity. We utilize advanced data tools like Helium10, JungleScout, and DataHawk to scrape long-tail, high-converting semantic keywords.",
             "We craft highly optimized listings featuring persuasive copywriting, strategic backend search terms, dynamic A+ (Enhanced Brand Content), and visually striking hero images to dominate organic search results and maximize click-through rates."

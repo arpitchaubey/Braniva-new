@@ -3,7 +3,7 @@
 @theme {
   --color-primary: #0F3D3E;
   --color-accent: #1ABC9C;
-  --color-brand-bg: #121212;
+  --color-brand-bg: #0A0A0A;
   --color-brand-secondary: #1F1F1F;
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #B0B0B0;
@@ -13,12 +13,12 @@
 }
 
 :root {
-  --background: #121212;
+  --background: #0A0A0A;
   --foreground: #FFFFFF;
 }
 
-body {
-  background-color: var(--background);
+html, body {
+  background-color: #0A0A0A !important;
   color: var(--foreground);
   font-family: var(--font-inter), Arial, sans-serif;
   overflow-x: hidden;

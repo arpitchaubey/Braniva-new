@@ -5,6 +5,7 @@ import "./globals.css";
 import AnimatedBackground from "@/components/backgrounds/AnimatedBackground";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -13,11 +14,13 @@ const GA_MEASUREMENT_ID = "G-WETJ53C5L8";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,6 +36,8 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 };
+import TrafficTracker from "@/components/layout/TrafficTracker";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -43,9 +48,9 @@ export default function RootLayout({
       <head>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -57,14 +62,17 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${sora.variable} antialiased min-h-screen flex flex-col bg-[#0A0A0A] text-white`}
       >
-        <AnimatedBackground />
-        <Navbar />
-        <main className="flex-grow z-10 relative mt-20">
-          {children}
-        </main>
-        <Footer />
-        <Analytics />
-        <SpeedInsights />
+        <SmoothScroll>
+          <TrafficTracker />
+          <AnimatedBackground />
+          <Navbar />
+          <main id="main-content" role="main" className="flex-grow z-10 relative">
+            {children}
+          </main>
+          <Footer />
+          <Analytics />
+          <SpeedInsights />
+        </SmoothScroll>
       </body>
     </html>
   );

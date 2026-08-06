@@ -1,66 +1,47 @@
-import { MetadataRoute } from "next";
-import { servicesData } from "@/data/servicesData";
+import { MetadataRoute } from 'next';
+import fs from 'fs';
+import path from 'path';
 
-const BASE_URL = "https://braniva.in";
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://braniva.in';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const staticPages: MetadataRoute.Sitemap = [
-        {
-            url: BASE_URL,
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 1.0,
-        },
-        {
-            url: `${BASE_URL}/about`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: `${BASE_URL}/services`,
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 0.9,
-        },
-        {
-            url: `${BASE_URL}/case-studies`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.7,
-        },
-        {
-            url: `${BASE_URL}/contact`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: `${BASE_URL}/schedule`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.7,
-        },
-        {
-            url: `${BASE_URL}/privacy`,
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.3,
-        },
-        {
-            url: `${BASE_URL}/terms`,
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.3,
-        },
-    ];
+  // Core static pages
+  const routes = [
+    '',
+    '/about',
+    '/services',
+    '/case-studies',
+    '/blog',
+    '/faq',
+    '/schedule',
+    '/contact',
+    '/terms',
+    '/privacy',
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: 'weekly' as const,
+    priority: route === '' ? 1.0 : 0.8,
+  }));
 
-    const servicePages: MetadataRoute.Sitemap = servicesData.map((service) => ({
-        url: `${BASE_URL}/services/${service.id}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.8,
-    }));
+  // Dynamic blog post routes
+  let blogRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const blogsPath = path.join(process.cwd(), 'src', 'data', 'blogsStore.json');
+    if (fs.existsSync(blogsPath)) {
+      const blogsData = JSON.parse(fs.readFileSync(blogsPath, 'utf-8'));
+      if (Array.isArray(blogsData)) {
+        blogRoutes = blogsData.map((post) => ({
+          url: `${baseUrl}/blog/${post.slug}`,
+          lastModified: post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.6,
+        }));
+      }
+    }
+  } catch (error) {
+    console.error('Error generating blog sitemap entries:', error);
+  }
 
-    return [...staticPages, ...servicePages];
+  return [...routes, ...blogRoutes];
 }

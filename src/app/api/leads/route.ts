@@ -4,6 +4,50 @@ import { Resend } from 'resend';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import { google } from 'googleapis';
+import fs from 'fs';
+import path from 'path';
+
+const STORE_PATH = path.join(process.cwd(), 'src', 'data', 'leadsStore.json');
+
+function verifyAdmin(req: Request) {
+    const authHeader = req.headers.get('authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return false;
+    }
+    const token = authHeader.substring(7);
+    try {
+        const credentials = Buffer.from(token, 'base64').toString('utf-8');
+        const [username, password] = credentials.split(':');
+        const adminUser = process.env.ADMIN_USERNAME || 'admin';
+        const adminPass = process.env.ADMIN_PASSWORD || 'braniva2026';
+        return username === adminUser && password === adminPass;
+    } catch {
+        return false;
+    }
+}
+
+function readLocalLeads(): any[] {
+    try {
+        if (fs.existsSync(STORE_PATH)) {
+            const data = fs.readFileSync(STORE_PATH, 'utf-8');
+            const items = JSON.parse(data);
+            if (Array.isArray(items)) {
+                return items;
+            }
+        }
+    } catch (e) {
+        console.error('Failed to read leadsStore.json:', e);
+    }
+    return [];
+}
+
+function writeLocalLeads(items: any[]) {
+    try {
+        fs.writeFileSync(STORE_PATH, JSON.stringify(items, null, 2), 'utf-8');
+    } catch (e) {
+        console.error('Failed to write leadsStore.json:', e);
+    }
+}
 
 const calendar = google.calendar('v3');
 const calendarGoogleAuth = new google.auth.GoogleAuth({
@@ -165,7 +209,7 @@ export async function POST(req: Request) {
                     <div style="font-family: 'Inter', 'Manrope', Helvetica, Arial, sans-serif; background-color: #121212; padding: 40px 20px;">
                         <div style="max-width: 600px; margin: 0 auto; background-color: #1F1F1F; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5); border: 1px solid #0F3D3E;">
                             <div style="background-color: #0F3D3E; padding: 20px 30px; text-align: center; border-bottom: 2px solid #1ABC9C;">
-                                <img src="https://raw.githubusercontent.com/arpitchaubey/Braniva-new/main/public/logo.png" alt="Braniva" style="height: 48px; margin-bottom: 10px; display: inline-block;">
+                                <img src="https://raw.githubusercontent.com/arpitchaubey/Braniva-new/main/public/brand-logo.png" alt="Braniva" style="height: 48px; margin-bottom: 10px; display: inline-block;">
                                 <h1 style="margin: 0; font-size: 24px; color: #FFFFFF; font-family: 'Sora', 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.025em; line-height: 1; text-align: center;">
                                     Braniva<span style="display: inline-block; width: 6px; height: 6px; background-color: #1ABC9C; border-radius: 50%; margin-left: 4px; vertical-align: middle;"></span>
                                 </h1>
@@ -232,7 +276,7 @@ export async function POST(req: Request) {
                     <div style="font-family: 'Inter', 'Manrope', Helvetica, Arial, sans-serif; background-color: #121212; padding: 40px 20px; text-align: center;">
                         <div style="max-width: 600px; margin: 0 auto; background-color: #1F1F1F; border: 1px solid #0F3D3E; border-radius: 12px; overflow: hidden; text-align: left; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);">
                             <div style="padding: 40px 30px 30px; border-bottom: 1px solid #333333; text-align: center; background-color: #0F3D3E;">
-                                <img src="https://raw.githubusercontent.com/arpitchaubey/Braniva-new/main/public/logo.png" alt="Braniva Logo" style="height: 48px; margin-bottom: 10px; display: block;">
+                                <img src="https://raw.githubusercontent.com/arpitchaubey/Braniva-new/main/public/brand-logo.png" alt="Braniva Logo" style="height: 48px; margin-bottom: 10px; display: block;">
                                 <h1 style="margin: 0; font-family: 'Sora', 'Poppins', sans-serif; font-size: 32px; color: #FFFFFF; font-weight: 700; letter-spacing: 0.025em; line-height: 1; text-align: center;">
                                     Braniva<span style="display: inline-block; width: 8px; height: 8px; background-color: #1ABC9C; border-radius: 50%; margin-left: 4px; vertical-align: middle;"></span>
                                 </h1>
@@ -317,15 +361,88 @@ export async function POST(req: Request) {
                     MeetingTime: meeting_time || '',
                     Message: message || ''
                 });
-
             } catch (sheetError) {
                 console.error("Failed to append to Google Sheets:", sheetError);
             }
         }
 
+        // 4. Save to local fallback store as well
+        const localItems = readLocalLeads();
+        localItems.unshift({
+            id: String(Date.now()),
+            lead_type,
+            name,
+            email,
+            phone,
+            business_type,
+            company_name,
+            message,
+            meeting_date,
+            meeting_time,
+            created_at: new Date().toISOString()
+        });
+        writeLocalLeads(localItems);
+
         return NextResponse.json({ success: true }, { status: 201 });
     } catch (error) {
         console.error('Failed to process submission:', error);
+        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    }
+}
+
+export async function GET(req: Request) {
+    if (!verifyAdmin(req)) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    try {
+        if (process.env.DATABASE_URL) {
+            try {
+                const sql = neon(process.env.DATABASE_URL);
+                const rows = await sql`SELECT * FROM leads ORDER BY created_at DESC`;
+                if (rows.length > 0) {
+                    return NextResponse.json(rows);
+                }
+            } catch (dbErr) {
+                console.warn('Neon DB not available, using local leads file store:', dbErr);
+            }
+        }
+    } catch (err) {
+        console.error('Error fetching leads:', err);
+    }
+
+    const items = readLocalLeads();
+    return NextResponse.json(items);
+}
+
+export async function DELETE(req: Request) {
+    if (!verifyAdmin(req)) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    try {
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get('id');
+        if (!id) {
+            return NextResponse.json({ error: 'Missing ID parameter' }, { status: 400 });
+        }
+
+        if (process.env.DATABASE_URL) {
+            try {
+                const sql = neon(process.env.DATABASE_URL);
+                await sql`DELETE FROM leads WHERE id = ${id}`;
+            } catch (dbErr) {
+                console.error('Failed to delete from DB:', dbErr);
+            }
+        }
+
+        const items = readLocalLeads();
+        const filtered = items.filter((item: any) => String(item.id) !== String(id));
+        writeLocalLeads(filtered);
+
+        return NextResponse.json({ success: true });
+    } catch (err) {
+        console.error('Failed to delete lead:', err);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }

@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "category": "About Braniva",
+    "question": "What is Braniva and how do you help e-commerce & D2C brands?",
+    "answer": "Braniva is an all-in-one e-commerce enablement agency. We manage marketplace onboarding (Amazon, Flipkart, Blinkit, Zepto, Myntra), performance marketing, custom D2C website development, A+ rich media creation, and 3PL logistics optimization so brands can launch and scale effortlessly.",
+    "sort_order": 1
+  },
+  {
+    "id": 2,
+    "category": "Getting Started",
+    "question": "How do we get started with Braniva for our brand launch?",
+    "answer": "Getting started is simple! Book a free 30-minute consultation call at braniva.in/schedule or contact us at hello@braniva.in (+91 73038 72329). We review your product catalog, target channels, and paperwork to build a tailored onboarding roadmap.",
+    "sort_order": 2
+  },
+  {
+    "id": 3,
+    "category": "Pricing & Working Model",
+    "question": "What is your pricing model for marketplace onboarding & growth?",
+    "answer": "We offer flexible engagement models tailored to your brand stage — including fixed monthly retainers, growth-based revenue-share arrangements, and hybrid structures combining base retainers with performance incentives.",
+    "sort_order": 3
+  },
+  {
+    "id": 4,
+    "category": "Marketplace Onboarding",
+    "question": "Which marketplaces and quick-commerce platforms do you support?",
+    "answer": "We manage end-to-end account setup, category approvals, and listing optimization across Amazon India, Flipkart, Myntra, Nykaa, Ajio, Meesho, Blinkit, Zepto, and Swiggy Instamart.",
+    "sort_order": 4
+  },
+  {
+    "id": 5,
+    "category": "Marketplace Onboarding",
+    "question": "How long does it take to go from account setup to first live listing?",
+    "answer": "On average, a structured onboarding engagement takes 14 to 30 business days from kickoff to your first live listing, depending on GST/trademark paperwork and category license reviews.",
+    "sort_order": 5
+  },
+  {
+    "id": 6,
+    "category": "Marketplace Onboarding",
+    "question": "What documents and licenses are required to start selling on Indian marketplaces?",
+    "answer": "Minimum requirements include GST Certificate & PAN, active bank account details, Trademark Certificate or Brand Authorization Letter, and category licenses (FSSAI, Cosmetic, BIS).",
+    "sort_order": 6
+  },
+  {
+    "id": 7,
+    "category": "Performance Marketing",
+    "question": "Do you manage advertising spend and ROAS optimization across platforms?",
+    "answer": "Yes. We manage both on-platform ads (Amazon Ads, Flipkart Ads, Quick Commerce placements) and off-platform campaigns (Meta & Google Ads) with continuous bidding and negative-keyword optimization.",
+    "sort_order": 7
+  },
+  {
+    "id": 8,
+    "category": "Fulfillment & Logistics",
+    "question": "What steps do you take to reduce Return-to-Origin (RTO) rates?",
+    "answer": "We implement automated WhatsApp/IVR order confirmation flows, NDR buyer verification, COD-to-prepaid conversion incentives, and pincode risk scoring to minimize RTO losses.",
+    "sort_order": 8
+  },
+  {
+    "id": 9,
+    "category": "Website & Tech",
+    "question": "Can you build or redesign a custom D2C storefront?",
+    "answer": "Yes. We design and develop high-performance D2C storefronts on Next.js and Shopify with mobile-first UI/UX, custom analytics tracking, and streamlined high-conversion checkout engines.",
+    "sort_order": 9
+  }
+]

@@ -29,13 +29,24 @@ export default function ServicesPage() {
     const services = servicesData;
 
     return (
-        <div className="max-w-7xl mx-auto px-6 py-20">
-            <div className="text-center mb-20">
+        <div className="w-full min-h-screen bg-[#0A0A0A]">
+            <motion.div 
+                className="max-w-7xl mx-auto px-6 pt-28 md:pt-36 pb-20"
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+            >
+            <motion.div 
+                className="text-center mb-20"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
                 <h1 className="text-4xl md:text-6xl font-bold text-white font-sora mb-6">Our Services</h1>
                 <p className="text-[#B0B0B0] text-lg max-w-2xl mx-auto">
                     Comprehensive digital solutions designed to establish, optimize, and scale your brand&apos;s online presence.
                 </p>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col gap-24">
                 {services.map((svc, index) => (
@@ -49,10 +60,13 @@ export default function ServicesPage() {
                         viewport={{ once: true, amount: 0.2 }}
                     >
                         <div className="flex-1 flex justify-center">
-                            <div className="w-48 h-48 rounded-full bg-[#1F1F1F] border-2 border-[#0F3D3E] flex items-center justify-center shadow-[0_0_50px_rgba(26,188,156,0.1)] relative">
-                                <div className="absolute inset-0 rounded-full border border-[#1ABC9C]/30 animate-ping" style={{ animationDuration: '3s' }}></div>
+                            <motion.div 
+                                className="w-48 h-48 rounded-full bg-[#1F1F1F] border-2 border-[#1ABC9C]/40 flex items-center justify-center relative cursor-pointer"
+                                whileHover={{ scale: 1.1, rotate: [0, -10, 10, -5, 0] }}
+                                transition={{ duration: 0.4 }}
+                            >
                                 {svc.icon}
-                            </div>
+                            </motion.div>
                         </div>
 
                         <div className="flex-1">
@@ -74,17 +88,20 @@ export default function ServicesPage() {
                                 </ul>
                             </div>
                             <div className="mt-8">
-                                <Link
-                                    href={`/services/${svc.id}`}
-                                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1F1F1F] text-white hover:bg-[#1ABC9C] hover:text-[#0a0a0a] transition-colors border border-[#333] hover:border-[#1ABC9C] font-semibold"
-                                >
-                                    Learn More Details
-                                </Link>
+                                <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} className="inline-block">
+                                    <Link
+                                        href={`/services/${svc.id}`}
+                                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1F1F1F] text-white hover:bg-[#1ABC9C] hover:text-[#0a0a0a] transition-all border border-[#333] hover:border-[#1ABC9C] font-semibold"
+                                    >
+                                        Learn More Details
+                                    </Link>
+                                </motion.div>
                             </div>
                         </div>
                     </motion.section>
                 ))}
             </div>
-        </div>
-    );
+        </motion.div>
+    </div>
+);
 }

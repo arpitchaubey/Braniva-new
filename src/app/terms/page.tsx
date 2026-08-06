@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function TermsPage() {
     return (
-        <div className="min-h-screen bg-[#0a0a0c] text-white">
+        <div className="w-full min-h-screen bg-[#0A0A0A] text-white">
             {/* Hero */}
             <section className="pt-40 pb-16 px-6">
                 <div className="max-w-4xl mx-auto text-center">
@@ -168,7 +168,7 @@ export default function TermsPage() {
                             <p>
                                 If you have any questions about these Terms and Conditions, please contact us at:
                             </p>
-                            <div className="mt-4 p-6 rounded-xl bg-white/5 border border-white/10">
+                            <div className="mt-4 p-6 rounded-xl bg-[#1C1C1E] border border-[#27272A]">
                                 <p className="font-semibold text-white">Braniva</p>
                                 <p>Email: <a href="mailto:hello@braniva.in" className="text-[#1ABC9C] hover:underline">hello@braniva.in</a></p>
                                 <p>Location: Sector-71, Faridabad, Haryana, 121004, India (We operate as a fully remote team and do not maintain a physical office location.)</p>

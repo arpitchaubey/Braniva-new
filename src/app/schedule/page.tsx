@@ -155,7 +155,7 @@ export default function SchedulePage() {
     if (!mounted) return null;
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white py-12 px-4 md:py-20 font-sans selection:bg-[#1ABC9C] selection:text-black">
+        <div className="w-full min-h-screen bg-[#0A0A0A] text-white pt-28 md:pt-36 pb-20 px-4 font-sans selection:bg-[#1ABC9C] selection:text-black">
 
             <motion.div
                 className="text-center mb-10"
@@ -167,7 +167,7 @@ export default function SchedulePage() {
                     Schedule a Call
                 </h1>
                 <p className="text-[#A1A1AA] text-lg max-w-2xl mx-auto">
-                    Book a free 30-minute consultation. We'll send you an invitation confirming the details.
+                    Book a free 30-minute consultation. We&apos;ll send you an invitation confirming the details.
                 </p>
             </motion.div>
 
@@ -184,7 +184,7 @@ export default function SchedulePage() {
                         <div className="w-16 h-16 rounded-full bg-[#1ABC9C]/10 flex items-center justify-center mb-6">
                             <CheckCircle2 size={32} className="text-[#1ABC9C]" />
                         </div>
-                        <h2 className="text-3xl font-bold text-white font-sora mb-4">You're Already Scheduled!</h2>
+                        <h2 className="text-3xl font-bold text-white font-sora mb-4">You&apos;re Already Scheduled!</h2>
                         <p className="text-[#A1A1AA] max-w-md mx-auto mb-8">
                             We have received your previous inquiry and our team will get in touch with you shortly.
                             Please check your email for the meeting link.
@@ -327,7 +327,7 @@ export default function SchedulePage() {
                                                                         {isSelected && (
                                                                             <button
                                                                                 onClick={() => setStep('form')}
-                                                                                className="w-1/2 py-3 rounded bg-[#1ABC9C] hover:bg-[#14957D] text-[#050505] font-bold text-sm transition shadow-[0_0_15px_rgba(26,188,156,0.3)]"
+                                                                                className="w-1/2 py-3 rounded bg-[#1ABC9C] hover:bg-[#14957D] text-[#050505] font-bold text-sm transition border border-[#1ABC9C]"
                                                                             >
                                                                                 Next
                                                                             </button>
@@ -449,7 +449,7 @@ export default function SchedulePage() {
                                         </div>
                                         <h2 className="text-3xl font-bold text-white font-sora mb-4">Meeting Scheduled</h2>
                                         <p className="text-[#A1A1AA] max-w-md mx-auto mb-8">
-                                            You're scheduled with Braniva for <b>{formatTime(selectedTime!)}</b> on <b>{selectedDate!.toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' })}</b>.
+                                            You&apos;re scheduled with Braniva for <b>{formatTime(selectedTime!)}</b> on <b>{selectedDate!.toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' })}</b>.
                                             <br /><br />
                                             A calendar invitation has been sent to your email address, and our team will append the meeting link shortly.
                                         </p>
