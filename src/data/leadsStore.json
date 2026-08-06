@@ -1,0 +1,41 @@
+[
+  {
+    "id": "101",
+    "lead_type": "Consultation",
+    "name": "Sarah Jenkins",
+    "email": "sarah.j@apothecaryco.com",
+    "phone": "+1 (555) 234-5678",
+    "business_type": "D2C E-commerce Brand",
+    "company_name": "Apothecary Co.",
+    "message": "Looking to scale our Shopify storefront and optimize our Amazon store listings for higher conversions.",
+    "meeting_date": "2026-08-10",
+    "meeting_time": "14:30",
+    "created_at": "2026-08-05T14:30:00.000Z"
+  },
+  {
+    "id": "102",
+    "lead_type": "Contact",
+    "name": "David Miller",
+    "email": "david@nexuslabs.io",
+    "phone": "+1 (555) 876-5432",
+    "business_type": "SaaS / Tech Startup",
+    "company_name": "Nexus Labs",
+    "message": "We need custom UI/UX design and landing page development with high Core Web Vitals performance.",
+    "meeting_date": null,
+    "meeting_time": null,
+    "created_at": "2026-08-06T09:15:00.000Z"
+  },
+  {
+    "id": "103",
+    "lead_type": "Consultation",
+    "name": "Rajesh Kumar",
+    "email": "rajesh@vibeorganics.in",
+    "phone": "+91 98765 43210",
+    "business_type": "Marketplace Brand",
+    "company_name": "Vibe Organics",
+    "message": "Interested in full marketplace onboarding across Amazon India, Flipkart, and Blinkit.",
+    "meeting_date": "2026-08-12",
+    "meeting_time": "16:00",
+    "created_at": "2026-08-06T18:00:00.000Z"
+  }
+]

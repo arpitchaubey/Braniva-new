@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Aman Gupta",
+    "role": "Founder, Elysian Apparel",
+    "quote": "I had no idea how complicated marketplace listings were until I tried doing it myself. Braniva took over the whole catalog — titles, images, everything. We went live in 3 weeks and got our first orders before I expected.",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=aman",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Vikram Malhotra",
+    "role": "Marketing Director, Apex Cosmetics",
+    "quote": "They told me not to run ads yet my listings weren't ready. I'm glad I listened. Once everything was set up properly, the ads actually worked. I'd wasted money before trying to do this alone.",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=vikram",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Amit Khanna",
+    "role": "Operations Manager, A.K Industries",
+    "quote": "Onboarding our catalog onto Amazon and Flipkart was something I kept delaying because it felt too big. Braniva made it feel manageable. They handled brand registry, content, everything. Now it runs itself.",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=amit",
+    "rating": 5
+  }
+]

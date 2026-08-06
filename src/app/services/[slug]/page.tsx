@@ -30,9 +30,7 @@ export default function ServiceDetailPage() {
         <div className="w-full bg-[#0a0a0a] min-h-screen text-white pt-24 pb-16">
             {/* Hero Section */}
             <section className="max-w-5xl mx-auto px-6 mb-20 text-center relative">
-                <motion.div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#1ABC9C] rounded-full blur-[120px] opacity-10 z-0 pointer-events-none"
-                />
+
 
                 <motion.div
                     initial="hidden"
@@ -102,7 +100,7 @@ export default function ServiceDetailPage() {
                                         <span className="text-xs font-bold">{i + 1}</span>
                                     </div>
 
-                                    <div className="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] bg-[#1A1A1A] p-4 rounded-xl border border-white/5 hover:border-[#1ABC9C]/30 transition-colors">
+                                    <div className="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] bg-[#1A1A1A] p-4 rounded-xl border border-[#27272A] hover:border-[#1ABC9C]/30 transition-colors">
                                         <h4 className="font-bold text-white mb-1">{step.title}</h4>
                                         <p className="text-sm text-[#A1A1AA]">{step.description}</p>
                                     </div>
@@ -121,12 +119,11 @@ export default function ServiceDetailPage() {
                     viewport={{ once: true }}
                     className="bg-gradient-to-r from-[#0F3D3E] to-[#121212] rounded-3xl p-12 border border-[#1ABC9C]/30 relative overflow-hidden"
                 >
-                    <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-[#1ABC9C] rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
                     <h2 className="text-3xl font-bold font-sora mb-4 text-white relative z-10">Ready to accelerate your growth?</h2>
                     <p className="text-[#B0B0B0] mb-8 text-lg relative z-10">Schedule a free consultation call today to discuss how our {service.title} service can scale your brand.</p>
                     <Link
                         href="/schedule"
-                        className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#1ABC9C] text-[#052222] font-bold text-lg hover:bg-[#1dd3af] transition-all shadow-[0_0_20px_rgba(26,188,156,0.2)] hover:shadow-[0_0_40px_rgba(26,188,156,0.4)] relative z-10 group"
+                        className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#1ABC9C] text-[#052222] font-bold text-lg hover:bg-[#1dd3af] transition-all border border-[#1ABC9C] relative z-10 group"
                     >
                         Schedule Free Consultation Call
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -1,0 +1,59 @@
+================================================================================
+                       BRANIVA - FREQUENTLY ASKED QUESTIONS (FAQ)
+================================================================================
+
+--------------------------------------------------------------------------------
+FEATURED FOUNDATIONAL TOPICS
+--------------------------------------------------------------------------------
+
+Q1: What is Braniva and how do you help e-commerce & D2C brands?
+A1: Braniva is an all-in-one e-commerce enablement agency. We manage marketplace 
+    onboarding (Amazon, Flipkart, Blinkit, Zepto, Myntra), performance marketing, 
+    custom D2C website development, A+ rich media creation, and 3PL logistics 
+    optimization so brands can launch and scale effortlessly.
+
+Q2: How do we get started with Braniva for our brand launch?
+A2: Getting started is simple! Book a free 30-minute consultation call at 
+    braniva.in/schedule or contact us at hello@braniva.in (+91 73038 72329). 
+    We review your product catalog, target channels, and paperwork to build a 
+    tailored onboarding roadmap.
+
+Q3: What is your pricing model for marketplace onboarding & growth?
+A3: We offer flexible engagement models tailored to your brand stage — including 
+    fixed monthly retainers, growth-based revenue-share arrangements, and hybrid 
+    structures combining base retainers with performance incentives.
+
+--------------------------------------------------------------------------------
+1. MARKETPLACE ONBOARDING & STORE SETUP
+--------------------------------------------------------------------------------
+
+Q4: Which marketplaces and quick-commerce platforms do you support?
+A4: We manage end-to-end account setup, category approvals, and listing optimization 
+    across Amazon India, Flipkart, Myntra, Nykaa, Ajio, Meesho, Blinkit, Zepto, 
+    and Swiggy Instamart.
+
+Q5: How long does it take to go from account setup to first live listing?
+A5: On average, a structured onboarding engagement takes 14 to 30 business days 
+    from kickoff to your first live listing.
+
+Q6: What documents and licenses are required to start selling on Indian marketplaces?
+A6: Minimum requirements include GST Certificate & PAN, active bank account details, 
+    Trademark Certificate or Brand Authorization Letter, and category licenses 
+    (FSSAI, Cosmetic, BIS).
+
+--------------------------------------------------------------------------------
+2. PERFORMANCE MARKETING & LOGISTICS
+--------------------------------------------------------------------------------
+
+Q7: Do you manage advertising spend and ROAS optimization across platforms?
+A7: Yes. We manage both on-platform ads (Amazon Ads, Flipkart Ads, Quick Commerce) 
+    and off-platform campaigns (Meta & Google Ads) with continuous bidding optimization.
+
+Q8: What steps do you take to reduce Return-to-Origin (RTO) rates?
+A8: We implement automated WhatsApp/IVR order confirmation flows, NDR buyer verification, 
+    COD-to-prepaid conversion incentives, and pincode risk scoring to minimize RTO losses.
+
+Q9: Can you build or redesign a custom D2C storefront?
+A9: Yes. We design and develop high-performance D2C storefronts on Next.js and Shopify 
+    with mobile-first UI/UX, custom analytics tracking, and streamlined checkout.
+================================================================================

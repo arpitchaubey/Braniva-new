@@ -1,0 +1,9 @@
+# Braniva Robots.txt
+User-agent: *
+Allow: /
+
+# Block admin panel from search engine indexing
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://braniva.in/sitemap.xml

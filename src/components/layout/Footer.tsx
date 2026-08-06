@@ -1,17 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { MoveRight, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+    const pathname = usePathname();
+    if (pathname?.startsWith('/admin')) {
+        return null;
+    }
     return (
-        <footer className="border-t border-[#1F1F1F] bg-[#0a0a0c] pt-20 pb-10">
+        <footer role="contentinfo" className="bg-[#0A0A0A] pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
                     {/* Brand Column */}
                     <div className="lg:col-span-4">
                         <Link href="/" className="inline-flex flex-col items-start gap-4 mb-8 group transition-transform">
                             <div className="relative w-12 h-12 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:-translate-y-1">
-                                <Image src="/logo.png" alt="Braniva Logo" fill className="object-contain" sizes="48px" />
+                                <Image src="/brand-logo.png" alt="Braniva Logo" fill className="object-contain" sizes="48px" unoptimized />
                             </div>
                             <div className="flex items-baseline">
                                 <span className="text-3xl font-bold font-sora text-white tracking-wide">Braniva</span>
@@ -61,6 +68,8 @@ export default function Footer() {
                             <li><Link href="/about" className="hover:text-[#1ABC9C] transition-colors">About Us</Link></li>
                             <li><Link href="/services" className="hover:text-[#1ABC9C] transition-colors">All Services</Link></li>
                             <li><Link href="/case-studies" className="hover:text-[#1ABC9C] transition-colors">Case Studies</Link></li>
+                            <li><Link href="/blog" className="hover:text-[#1ABC9C] transition-colors">Blog</Link></li>
+                            <li><Link href="/faq" className="hover:text-[#1ABC9C] transition-colors">FAQ</Link></li>
                             <li><Link href="/schedule" className="hover:text-[#1ABC9C] transition-colors">Book a Call</Link></li>
                             <li><Link href="/contact" className="hover:text-[#1ABC9C] transition-colors">Contact</Link></li>
                         </ul>
