@@ -1,5 +1,12 @@
 [
   {
+    "id": "1786048776297",
+    "page_path": "/",
+    "referrer": "http://localhost:3000/",
+    "visitor_id": "v_1786045789088_k6bu6l",
+    "timestamp": "2026-08-06T20:39:33.383Z"
+  },
+  {
     "id": "1786048115209",
     "page_path": "/",
     "referrer": "http://localhost:3000/about",

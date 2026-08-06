@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
-import path from 'path';
-import fs from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
+
+// Configure Cloudinary (env vars set in Vercel dashboard)
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // Helper to verify admin token
 function verifyAdmin(req: Request) {
@@ -33,24 +39,32 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
         }
 
-        // Get file name from form data
-        const filename = (formData.get('filename') as string) || 'upload_' + Date.now();
-        const cleanFilename = filename.replace(/[^a-zA-Z0-9.\-_]/g, '_');
-
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        // Define local upload directory
-        const uploadDir = path.join(process.cwd(), 'public', 'gallery');
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir, { recursive: true });
+        // Check if Cloudinary is configured
+        if (
+            process.env.CLOUDINARY_CLOUD_NAME &&
+            process.env.CLOUDINARY_API_KEY &&
+            process.env.CLOUDINARY_API_SECRET
+        ) {
+            // Upload to Cloudinary via base64
+            const base64 = `data:image/jpeg;base64,${buffer.toString('base64')}`;
+            const result = await cloudinary.uploader.upload(base64, {
+                folder: 'braniva',
+                transformation: [{ quality: 'auto', fetch_format: 'auto' }],
+            });
+
+            return NextResponse.json({ success: true, url: result.secure_url });
         }
 
-        const filePath = path.join(uploadDir, cleanFilename);
-        await fs.promises.writeFile(filePath, buffer);
-
-        console.log(`Uploaded file saved to: ${filePath}`);
-        return NextResponse.json({ success: true, url: `/gallery/${cleanFilename}` });
+        // Fallback: return error if Cloudinary not configured (filesystem not writable in production)
+        return NextResponse.json(
+            {
+                error: 'Image hosting not configured. Please add CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET to your environment variables.',
+            },
+            { status: 503 }
+        );
     } catch (error) {
         console.error('Failed to upload file:', error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
