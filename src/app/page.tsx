@@ -109,7 +109,7 @@ export default function Home() {
     <div className="flex flex-col items-center w-full overflow-hidden">
       {/* HERO SECTION */}
       <motion.section
-        className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden pt-24 pb-16 md:pt-32 lg:pt-40 lg:pb-32"
+        className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden pb-16 lg:pb-32"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
