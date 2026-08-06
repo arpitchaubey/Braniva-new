@@ -31,7 +31,7 @@ export default function ServicesPage() {
     return (
         <div className="w-full min-h-screen bg-[#0A0A0A]">
             <motion.div 
-                className="max-w-7xl mx-auto px-6 pt-28 md:pt-36 pb-20"
+                className="max-w-7xl mx-auto px-4 sm:px-6 pt-28 md:pt-36 pb-20"
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -48,12 +48,12 @@ export default function ServicesPage() {
                 </p>
             </motion.div>
 
-            <div className="flex flex-col gap-24">
+            <div className="flex flex-col gap-16 md:gap-24">
                 {services.map((svc, index) => (
                     <motion.section
                         key={svc.id}
                         id={svc.id}
-                        className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}
+                        className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-12 items-center text-center md:text-left`}
                         variants={scrollItemVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -61,7 +61,7 @@ export default function ServicesPage() {
                     >
                         <div className="flex-1 flex justify-center">
                             <motion.div 
-                                className="w-48 h-48 rounded-full bg-[#1F1F1F] border-2 border-[#1ABC9C]/40 flex items-center justify-center relative cursor-pointer"
+                                className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-[#1F1F1F] border-2 border-[#1ABC9C]/40 flex items-center justify-center relative cursor-pointer"
                                 whileHover={{ scale: 1.1, rotate: [0, -10, 10, -5, 0] }}
                                 transition={{ duration: 0.4 }}
                             >
@@ -87,7 +87,7 @@ export default function ServicesPage() {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="mt-8">
+                            <div className="mt-8 flex justify-center md:justify-start">
                                 <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} className="inline-block">
                                     <Link
                                         href={`/services/${svc.id}`}

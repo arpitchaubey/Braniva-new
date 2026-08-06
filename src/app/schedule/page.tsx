@@ -155,7 +155,7 @@ export default function SchedulePage() {
     if (!mounted) return null;
 
     return (
-        <div className="w-full min-h-screen bg-[#0A0A0A] text-white pt-28 md:pt-36 pb-20 px-4 font-sans selection:bg-[#1ABC9C] selection:text-black">
+        <div className="w-full min-h-screen bg-[#0A0A0A] text-white pt-24 md:pt-36 pb-20 px-4 sm:px-6 font-sans selection:bg-[#1ABC9C] selection:text-black">
 
             <motion.div
                 className="text-center mb-10"
@@ -163,7 +163,7 @@ export default function SchedulePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <h1 className="text-4xl md:text-5xl font-bold font-sora mb-4 text-[#F4F4F5]">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sora mb-4 text-[#F4F4F5]">
                     Schedule a Call
                 </h1>
                 <p className="text-[#A1A1AA] text-lg max-w-2xl mx-auto">

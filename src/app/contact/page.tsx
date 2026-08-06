@@ -82,7 +82,7 @@ export default function ContactPage() {
 
     return (
         <div className="w-full min-h-screen bg-[#0A0A0A]">
-            <div className="max-w-7xl mx-auto px-6 pt-28 md:pt-36 pb-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28 md:pt-36 pb-20">
                 <motion.div
                     className="text-center mb-20"
                     initial={{ opacity: 0, y: -20 }}
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 </motion.div>
 
                 <motion.div
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-16"
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16"
                     variants={scrollContainerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -157,17 +157,17 @@ export default function ContactPage() {
                             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                                 <div className="flex flex-col gap-2">
                                     <label htmlFor="name" className="text-sm font-medium text-[#B0B0B0]">Your Name *</label>
-                                    <input required type="text" name="name" id="name" className="bg-[#121212] border border-[#333] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#1ABC9C] transition-colors" />
+                                    <input required type="text" name="name" id="name" className="bg-[#121212] border border-[#333] rounded-lg px-4 py-3 text-base text-white focus:outline-none focus:border-[#1ABC9C] transition-colors" />
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="flex flex-col gap-2">
                                         <label htmlFor="email" className="text-sm font-medium text-[#B0B0B0]">Email Address *</label>
-                                        <input required type="email" name="email" id="email" className="bg-[#121212] border border-[#333] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#1ABC9C] transition-colors" />
+                                        <input required type="email" name="email" id="email" className="bg-[#121212] border border-[#333] rounded-lg px-4 py-3 text-base text-white focus:outline-none focus:border-[#1ABC9C] transition-colors" />
                                     </div>
                                     <div className="flex flex-col gap-2">
                                         <label htmlFor="phone" className="text-sm font-medium text-[#B0B0B0]">Phone Number *</label>
-                                        <input required type="tel" name="phone" id="phone" className="bg-[#121212] border border-[#333] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#1ABC9C] transition-colors" />
+                                        <input required type="tel" name="phone" id="phone" className="bg-[#121212] border border-[#333] rounded-lg px-4 py-3 text-base text-white focus:outline-none focus:border-[#1ABC9C] transition-colors" />
                                     </div>
                                 </div>
 
@@ -182,7 +182,7 @@ export default function ContactPage() {
                                     </div>
                                     <div className="flex flex-col gap-2">
                                         <label htmlFor="company" className="text-sm font-medium text-[#B0B0B0]">Company / Brand Name</label>
-                                        <input type="text" name="company" id="company" className="bg-[#121212] border border-[#333] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#1ABC9C] transition-colors" />
+                                        <input type="text" name="company" id="company" className="bg-[#121212] border border-[#333] rounded-lg px-4 py-3 text-base text-white focus:outline-none focus:border-[#1ABC9C] transition-colors" />
                                     </div>
                                 </div>
 

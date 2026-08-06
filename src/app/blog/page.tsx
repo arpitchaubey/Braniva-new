@@ -38,7 +38,7 @@ export default function BlogListingPage() {
 
     return (
         <div className="w-full min-h-screen bg-[#0A0A0A] pt-28 md:pt-36 pb-20 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
                 {/* Header */}
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                     <span className="text-[#1ABC9C] font-bold tracking-widest uppercase text-xs mb-3 inline-block">Insights & Knowledge</span>
@@ -58,7 +58,7 @@ export default function BlogListingPage() {
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Search articles..."
-                                className="w-full bg-[#1A1A1A] border border-[#27272A] rounded-full pl-12 pr-6 py-3.5 text-white text-sm focus:outline-none focus:border-[#1ABC9C]/50 transition-colors shadow-lg"
+                                className="w-full bg-[#1A1A1A] border border-[#27272A] rounded-full pl-12 pr-6 py-3.5 text-base text-white focus:outline-none focus:border-[#1ABC9C]/50 transition-colors shadow-lg"
                             />
                         </div>
                     </div>
@@ -101,7 +101,7 @@ export default function BlogListingPage() {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#121212] via-transparent to-transparent opacity-80 z-10"></div>
                                 </div>
-                                <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between">
+                                <div className="lg:col-span-5 p-6 md:p-12 flex flex-col justify-between">
                                     <div>
                                         <span className="text-[10px] font-bold uppercase tracking-wider text-[#1ABC9C] bg-[#1ABC9C]/10 border border-[#1ABC9C]/20 px-3 py-1 rounded-full">
                                             Featured • {featuredPost.category}

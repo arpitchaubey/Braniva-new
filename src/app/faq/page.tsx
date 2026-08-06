@@ -41,7 +41,7 @@ export default function FaqPage() {
 
     return (
         <motion.div 
-            className="min-h-screen bg-[#0A0A0A] pt-28 md:pt-36 pb-20 px-6 relative overflow-hidden"
+            className="min-h-screen bg-[#0A0A0A] pt-28 md:pt-36 pb-20 px-4 sm:px-6 relative overflow-hidden"
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -70,7 +70,7 @@ export default function FaqPage() {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search questions or keywords..."
-                            className="w-full bg-[#1A1A1A] border border-[#27272A] rounded-full pl-12 pr-6 py-4 text-white text-sm focus:outline-none focus:border-[#1ABC9C] focus:scale-[1.01] transition-all shadow-lg"
+                            className="w-full bg-[#1A1A1A] border border-[#27272A] rounded-full pl-12 pr-6 py-4 text-base text-white focus:outline-none focus:border-[#1ABC9C] focus:scale-[1.01] transition-all shadow-lg"
                         />
                     </div>
                 </motion.div>
@@ -153,7 +153,7 @@ export default function FaqPage() {
 
                 {/* Support CTA */}
                 <motion.div 
-                    className="mt-20 p-8 rounded-3xl bg-[#1A1A1A] border border-[#27272A] text-center relative overflow-hidden"
+                    className="mt-20 p-6 sm:p-8 rounded-3xl bg-[#1A1A1A] border border-[#27272A] text-center relative overflow-hidden"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

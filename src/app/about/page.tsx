@@ -24,7 +24,7 @@ export default function AboutPage() {
 
     return (
         <div className="w-full min-h-screen bg-[#0A0A0A]">
-            <div className="max-w-7xl mx-auto px-6 pt-28 md:pt-36 pb-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28 md:pt-36 pb-20">
                 <motion.div
                     className="text-center mb-20"
                     initial={{ opacity: 0, y: -20 }}
@@ -38,7 +38,7 @@ export default function AboutPage() {
                 </motion.div>
 
                 <motion.div
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24"
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-16 md:mb-24"
                     variants={scrollContainerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -53,7 +53,7 @@ export default function AboutPage() {
                             At Braniva, we bridge the gap between a brand&apos;s potential and its actual digital footprint. We handle the technicalities of marketplace onboarding and the intricacies of customer retention engines so you can focus on building amazing products.
                         </p>
                     </motion.div>
-                    <motion.div variants={scrollItemVariants} className="bg-[#121216] rounded-3xl p-10 border border-white/10 flex flex-col justify-center">
+                    <motion.div variants={scrollItemVariants} className="bg-[#121216] rounded-3xl p-6 sm:p-10 border border-white/10 flex flex-col justify-center">
                         <h2 className="text-3xl font-bold text-white font-sora mb-6">Our Vision</h2>
                         <p className="text-white text-xl font-medium leading-relaxed">
                             &quot;To become the definitive growth partner for aspiring e-commerce and D2C brands globally.&quot;
@@ -71,7 +71,7 @@ export default function AboutPage() {
                         Our Core Values
                     </motion.h2>
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
                         variants={scrollContainerVariants}
                         initial="hidden"
                         whileInView="visible"

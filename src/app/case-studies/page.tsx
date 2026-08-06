@@ -58,7 +58,7 @@ export default function CaseStudiesPage() {
 
     return (
         <div className="w-full min-h-screen bg-[#0A0A0A]">
-            <div className="max-w-7xl mx-auto px-6 pt-28 md:pt-36 pb-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28 md:pt-36 pb-20">
                 <motion.div
                     className="text-center mb-20"
                     initial={{ opacity: 0, y: -20 }}
@@ -96,7 +96,7 @@ export default function CaseStudiesPage() {
                                     variants={scrollItemVariants}
                                     whileHover={{ y: -6, scale: 1.01 }}
                                     transition={{ type: "spring", stiffness: 300 }}
-                                    className="bg-[#121216] border border-white/10 rounded-3xl p-8 lg:p-12 shadow-xl hover:border-[#1ABC9C]/40 transition-colors"
+                                    className="bg-[#121216] border border-white/10 rounded-3xl p-5 sm:p-8 lg:p-12 shadow-xl hover:border-[#1ABC9C]/40 transition-colors"
                                 >
                                     <div className="mb-12 border-b border-white/5 pb-10">
                                         <span className="text-[#1ABC9C] font-semibold text-xs tracking-wider uppercase mb-4 block">

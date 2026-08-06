@@ -108,7 +108,7 @@ export default function Home() {
     <div className="flex flex-col items-center w-full overflow-hidden">
       {/* HERO SECTION */}
       <motion.section
-        className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-32"
+        className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden pt-24 pb-16 md:pt-32 lg:pt-40 lg:pb-32"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -142,7 +142,7 @@ export default function Home() {
 
         <div className="w-full max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
           <motion.h1
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white font-sora leading-[1.12] mb-8 tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white font-sora leading-[1.12] mb-6 md:mb-8 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -285,7 +285,7 @@ export default function Home() {
           <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
 
           <motion.div
-            className="flex flex-none items-center gap-24 whitespace-nowrap px-12"
+            className="flex flex-none items-center gap-12 md:gap-24 whitespace-nowrap px-6 md:px-12"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ repeat: Infinity, ease: "linear", duration: 35 }}
           >
@@ -331,7 +331,7 @@ export default function Home() {
           viewport={{ once: true, amount: 0.1 }}
         >
           {/* Vertical Connecting Line */}
-          <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-[#1ABC9C]/40 md:-translate-x-1/2"></div>
+          <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-[#1ABC9C]/40"></div>
 
           {[
             { num: "1", title: "Discovery Call", desc: "We listen first. Understand where you are, what you've already tried, and what outcome you actually need before suggesting anything." },
@@ -343,10 +343,10 @@ export default function Home() {
           ].map((step, i) => (
             <motion.div
               key={i}
-              className={`relative flex items-center mb-12 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+              className={`relative flex items-center mb-10 md:mb-12`}
               variants={scrollItemVariants}
             >
-              <div className={`ml-12 md:ml-0 md:w-1/2 p-6 ${i % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
+              <div className={`ml-12 md:ml-0 md:w-1/2 p-4 md:p-6 ${i % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
                 <h3 className="text-2xl font-bold text-white font-sora mb-2">{step.title}</h3>
                 <p className="text-[#B0B0B0]">{step.desc}</p>
               </div>
@@ -768,7 +768,7 @@ export default function Home() {
       >
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
-            className="bg-gradient-to-br from-[#1F1F1F] to-[#121212] border border-[#333] p-12 lg:p-20 rounded-3xl relative overflow-hidden"
+            className="bg-gradient-to-br from-[#1F1F1F] to-[#121212] border border-[#333] p-6 sm:p-10 lg:p-20 rounded-3xl relative overflow-hidden"
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}

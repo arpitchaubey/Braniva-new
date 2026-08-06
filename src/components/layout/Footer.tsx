@@ -13,10 +13,10 @@ export default function Footer() {
     return (
         <footer role="contentinfo" className="bg-[#0A0A0A] pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-16">
                     {/* Brand Column */}
-                    <div className="lg:col-span-4">
-                        <Link href="/" className="inline-flex flex-col items-start gap-4 mb-8 group transition-transform">
+                    <div className="sm:col-span-2 lg:col-span-4 text-center sm:text-left">
+                        <Link href="/" className="inline-flex flex-col items-center sm:items-start gap-4 mb-8 group transition-transform">
                             <div className="relative w-12 h-12 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:-translate-y-1">
                                 <Image src="/brand-logo.png" alt="Braniva Logo" fill className="object-contain" sizes="48px" unoptimized />
                             </div>
@@ -33,7 +33,7 @@ export default function Footer() {
                         </Link>
 
                         {/* Social Icons */}
-                        <div className="flex items-center gap-4 mt-8">
+                        <div className="flex items-center justify-center sm:justify-start gap-4 mt-8">
                             <a href="https://www.instagram.com/braniva.in" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1F1F1F] flex items-center justify-center hover:bg-[#1ABC9C] transition-colors" aria-label="Braniva on Instagram">
                                 <Instagram className="w-5 h-5 text-white" />
                             </a>
@@ -99,7 +99,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-[#1F1F1F] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#666]">
+                <div className="pt-8 border-t border-[#1F1F1F] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#666] text-center sm:text-left">
                     <p>© {new Date().getFullYear()} Braniva. All rights reserved.</p>
                     <div className="flex items-center gap-6">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
