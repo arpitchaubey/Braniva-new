@@ -1,12 +1,4 @@
 import { NextResponse } from 'next/server';
-import { v2 as cloudinary } from 'cloudinary';
-
-// Configure Cloudinary (env vars set in Vercel dashboard)
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 // Helper to verify admin token
 function verifyAdmin(req: Request) {
@@ -26,10 +18,35 @@ function verifyAdmin(req: Request) {
     }
 }
 
+// SHA-1 HMAC using Web Crypto API (built-in to Node/Edge — no external package needed)
+async function sha1(message: string): Promise<string> {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(message);
+    const key = encoder.encode(process.env.CLOUDINARY_API_SECRET || '');
+    const cryptoKey = await crypto.subtle.importKey(
+        'raw', key, { name: 'HMAC', hash: 'SHA-1' }, false, ['sign']
+    );
+    const signature = await crypto.subtle.sign('HMAC', cryptoKey, data);
+    return Array.from(new Uint8Array(signature))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+}
+
 export async function POST(req: Request) {
     try {
         if (!verifyAdmin(req)) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
+        const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+        const apiKey = process.env.CLOUDINARY_API_KEY;
+        const apiSecret = process.env.CLOUDINARY_API_SECRET;
+
+        if (!cloudName || !apiKey || !apiSecret) {
+            return NextResponse.json(
+                { error: 'Cloudinary environment variables not set. Add CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET in your Vercel project settings.' },
+                { status: 503 }
+            );
         }
 
         const formData = await req.formData();
@@ -39,34 +56,36 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
         }
 
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
+        // Build signed upload request — no SDK needed, pure REST
+        const timestamp = Math.floor(Date.now() / 1000).toString();
+        const folder = 'braniva';
+        const paramsToSign = `folder=${folder}&timestamp=${timestamp}`;
+        const signature = await sha1(`${paramsToSign}${apiSecret}`);
 
-        // Check if Cloudinary is configured
-        if (
-            process.env.CLOUDINARY_CLOUD_NAME &&
-            process.env.CLOUDINARY_API_KEY &&
-            process.env.CLOUDINARY_API_SECRET
-        ) {
-            // Upload to Cloudinary via base64
-            const base64 = `data:image/jpeg;base64,${buffer.toString('base64')}`;
-            const result = await cloudinary.uploader.upload(base64, {
-                folder: 'braniva',
-                transformation: [{ quality: 'auto', fetch_format: 'auto' }],
-            });
+        // Build multipart form data for Cloudinary REST API
+        const uploadForm = new FormData();
+        uploadForm.append('file', file);
+        uploadForm.append('api_key', apiKey);
+        uploadForm.append('timestamp', timestamp);
+        uploadForm.append('signature', signature);
+        uploadForm.append('folder', folder);
 
-            return NextResponse.json({ success: true, url: result.secure_url });
+        const uploadRes = await fetch(
+            `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+            { method: 'POST', body: uploadForm }
+        );
+
+        if (!uploadRes.ok) {
+            const err = await uploadRes.text();
+            console.error('Cloudinary upload error:', err);
+            return NextResponse.json({ error: 'Cloudinary upload failed', detail: err }, { status: 500 });
         }
 
-        // Fallback: return error if Cloudinary not configured (filesystem not writable in production)
-        return NextResponse.json(
-            {
-                error: 'Image hosting not configured. Please add CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET to your environment variables.',
-            },
-            { status: 503 }
-        );
+        const result = await uploadRes.json() as { secure_url: string };
+        return NextResponse.json({ success: true, url: result.secure_url });
+
     } catch (error) {
-        console.error('Failed to upload file:', error);
+        console.error('Upload route error:', error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }

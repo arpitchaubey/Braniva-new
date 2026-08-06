@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Exclude Three.js from server bundle — it's only used client-side via dynamic()
-  serverExternalPackages: ["three"],
+  serverExternalPackages: ["three", "cloudinary"],
 
   images: {
     // Allow Cloudinary and common image CDNs
