@@ -7,3 +7,13 @@ Disallow: /admin
 Disallow: /api/
 
 Sitemap: https://braniva.in/sitemap.xml
+
+# Content Signals (https://contentsignals.org)
+# We allow search indexing but restrict AI training and direct AI input usage
+Content-Signal: ai-train=no, search=yes, ai-input=no
+
+# Agent Discovery (RFC 8288 / Agent Skills Discovery)
+# AI agents can find our capabilities at:
+# /.well-known/api-catalog
+# /.well-known/agent-skills/index.json
+# /.well-known/mcp/server-card.json

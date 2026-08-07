@@ -366,18 +366,29 @@ export default function ColorBends({
     const container = containerRef.current;
     if (!material || !container) return;
 
+    let rect = container.getBoundingClientRect();
+
+    const updateRect = () => {
+      if (container) rect = container.getBoundingClientRect();
+    };
+
+    window.addEventListener('resize', updateRect, { passive: true });
+    window.addEventListener('scroll', updateRect, { passive: true });
+
     const handlePointerMove = (e: MouseEvent | PointerEvent) => {
-      const rect = container.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / (rect.width || 1)) * 2 - 1;
       const y = -(((e.clientY - rect.top) / (rect.height || 1)) * 2 - 1);
       pointerTargetRef.current.set(x, y);
     };
 
-    container.addEventListener('pointermove', handlePointerMove as EventListener);
+    container.addEventListener('pointermove', handlePointerMove as EventListener, { passive: true });
     return () => {
+      window.removeEventListener('resize', updateRect);
+      window.removeEventListener('scroll', updateRect);
       container.removeEventListener('pointermove', handlePointerMove as EventListener);
     };
   }, []);
+
 
   return <div ref={containerRef} className={`color-bends-container ${className}`} style={style} />;
 }

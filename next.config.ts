@@ -28,6 +28,44 @@ const nextConfig: NextConfig = {
       "framer-motion",
     ],
   },
+
+  // RFC 8288 Link headers for AI agent discovery
+  async headers() {
+    return [
+      {
+        // Homepage — advertise agent-discovery endpoints
+        source: "/",
+        headers: [
+          {
+            key: "Link",
+            value: [
+              '</.well-known/api-catalog>; rel="api-catalog"',
+              '</.well-known/agent-skills/index.json>; rel="agent-skills"',
+              '</.well-known/mcp/server-card.json>; rel="mcp-server-card"',
+            ].join(", "),
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "index, follow",
+          },
+        ],
+      },
+      {
+        // Well-known JSON endpoints — correct content types
+        source: "/.well-known/:path*",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, stale-while-revalidate=86400",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
