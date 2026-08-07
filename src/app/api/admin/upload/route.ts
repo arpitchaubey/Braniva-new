@@ -18,16 +18,12 @@ function verifyAdmin(req: Request) {
     }
 }
 
-// SHA-1 HMAC using Web Crypto API (built-in to Node/Edge — no external package needed)
+// Plain SHA-1 digest (NOT HMAC) — Cloudinary signs: SHA1(params_string + api_secret)
 async function sha1(message: string): Promise<string> {
     const encoder = new TextEncoder();
     const data = encoder.encode(message);
-    const key = encoder.encode(process.env.CLOUDINARY_API_SECRET || '');
-    const cryptoKey = await crypto.subtle.importKey(
-        'raw', key, { name: 'HMAC', hash: 'SHA-1' }, false, ['sign']
-    );
-    const signature = await crypto.subtle.sign('HMAC', cryptoKey, data);
-    return Array.from(new Uint8Array(signature))
+    const hashBuffer = await crypto.subtle.digest('SHA-1', data);
+    return Array.from(new Uint8Array(hashBuffer))
         .map(b => b.toString(16).padStart(2, '0'))
         .join('');
 }

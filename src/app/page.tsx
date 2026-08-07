@@ -182,13 +182,13 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.96 }} transition={{ type: "spring", stiffness: 400 }}>
-              <Link href="/schedule" className="w-full sm:w-auto px-10 py-5 rounded-full bg-[#1ABC9C] text-[#052222] font-bold text-lg hover:bg-[#1dd3af] transition-all border border-[#1ABC9C] flex items-center justify-center gap-3 group shadow-lg shadow-[#1ABC9C]/20">
+              <Link href="/schedule" className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#1ABC9C] text-[#052222] font-bold text-base hover:bg-[#1dd3af] transition-all border border-[#1ABC9C] flex items-center justify-center gap-2 group shadow-lg shadow-[#1ABC9C]/20">
                 Let&apos;s Get You Started
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.96 }} transition={{ type: "spring", stiffness: 400 }}>
-              <Link href="/#gallery" className="w-full sm:w-auto px-10 py-5 rounded-full border border-[#2D2D2D] bg-[#1F1F1F] text-white font-medium text-lg hover:bg-[#2A2A2A] hover:border-[#3D3D3F] transition-all flex items-center justify-center group">
+              <Link href="/#gallery" className="w-full sm:w-auto px-7 py-3.5 rounded-full border border-[#2D2D2D] bg-[#1F1F1F] text-white font-medium text-base hover:bg-[#2A2A2A] hover:border-[#3D3D3F] transition-all flex items-center justify-center group">
                 See How We&apos;ve Helped Others
               </Link>
             </motion.div>
@@ -325,43 +325,72 @@ export default function Home() {
         </div>
 
         <motion.div
-          className="relative max-w-7xl mx-auto px-6"
+          className="relative max-w-4xl mx-auto px-6"
           variants={scrollContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {/* Vertical Connecting Line */}
-          <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-[#1ABC9C]/40"></div>
+          {/* Vertical Connecting Line — desktop only */}
+          <div className="hidden md:block absolute left-1/2 top-4 bottom-4 w-0.5 -translate-x-1/2 bg-[#1ABC9C]/40"></div>
 
           {[
             { num: "1", title: "Discovery Call", desc: "We listen first. Understand where you are, what you've already tried, and what outcome you actually need before suggesting anything." },
             { num: "2", title: "Scope & Roadmap", desc: "We define exactly what we're doing, in what order, and why. You'll know the plan before we touch a single deliverable." },
             { num: "3", title: "Research & Preparation", desc: "Strategy, competitor analysis, platform requirements, creative direction all done before execution begins. No rushing to market." },
-            { num: "4", title: "Build & Execute", desc: "We do the work — listings, campaigns, designs, integrations with regular check-ins so you're never left wondering what's happening." },
+            { num: "4", title: "Build & Execute", desc: "We do the work listings, campaigns, designs, integrations with regular check-ins so you're never left wondering what's happening." },
             { num: "5", title: "Launch & Review", desc: "Go live, monitor closely, and fix anything that needs fixing before it becomes a problem. The first 2 weeks after launch matter most." },
             { num: "6", title: "Optimise & Grow", desc: "We track what's working, cut what isn't, and build on real results not assumptions. Growth that compounds, not resets." }
           ].map((step, i) => (
             <motion.div
               key={i}
-              className={`relative flex items-center mb-10 md:mb-12`}
+              className="relative flex items-start gap-5 mb-10 md:mb-12 md:items-center"
               variants={scrollItemVariants}
             >
-              <div className={`ml-12 md:ml-0 md:w-1/2 p-4 md:p-6 ${i % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
-                <h3 className="text-2xl font-bold text-white font-sora mb-2">{step.title}</h3>
-                <p className="text-[#B0B0B0]">{step.desc}</p>
-              </div>
-              <motion.div
-                className="absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-[#0F3D3E] border-2 border-[#1ABC9C] md:-translate-x-1/2 flex items-center justify-center text-white text-sm font-bold z-10 cursor-pointer"
-                whileHover={{ scale: 1.25, rotate: 360 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              >
+              {/* ── Mobile layout: bullet left, text right ── */}
+              <div className="md:hidden flex-shrink-0 w-9 h-9 rounded-full bg-[#0F3D3E] border-2 border-[#1ABC9C] flex items-center justify-center text-white text-sm font-bold z-10">
                 {step.num}
-              </motion.div>
+              </div>
+              <div className="md:hidden flex-1">
+                <h3 className="text-xl font-bold text-white font-sora mb-1">{step.title}</h3>
+                <p className="text-[#B0B0B0] text-sm leading-relaxed">{step.desc}</p>
+              </div>
+
+              {/* ── Desktop layout: true 3-column zigzag ── */}
+              <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:items-center w-full">
+                {/* Left slot */}
+                <div className="pr-10 text-right">
+                  {i % 2 === 0 && (
+                    <>
+                      <h3 className="text-2xl font-bold text-white font-sora mb-2">{step.title}</h3>
+                      <p className="text-[#B0B0B0]">{step.desc}</p>
+                    </>
+                  )}
+                </div>
+                {/* Center number */}
+                <motion.div
+                  className="w-9 h-9 rounded-full bg-[#0F3D3E] border-2 border-[#1ABC9C] flex items-center justify-center text-white text-sm font-bold z-10 cursor-pointer flex-shrink-0"
+                  whileHover={{ scale: 1.25, rotate: 360 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                >
+                  {step.num}
+                </motion.div>
+                {/* Right slot */}
+                <div className="pl-10">
+                  {i % 2 !== 0 && (
+                    <>
+                      <h3 className="text-2xl font-bold text-white font-sora mb-2">{step.title}</h3>
+                      <p className="text-[#B0B0B0]">{step.desc}</p>
+                    </>
+                  )}
+                </div>
+              </div>
             </motion.div>
           ))}
+
         </motion.div>
       </motion.section>
+
 
       {/* GALLERY GRID SECTION */}
       {galleryItems.length > 0 && (
@@ -775,22 +804,23 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white font-sora mb-6 relative z-10">Not sure where to start?</h2>
-            <p className="text-xl text-[#B0B0B0] mb-2 max-w-2xl mx-auto relative z-10">Start with an honest 20-minute conversation.</p>
-            <p className="text-base text-[#777] mb-10 max-w-2xl mx-auto relative z-10">We&apos;ll look at your product, your idea, and your target platforms and tell you exactly what needs to happen before you launch.</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white font-sora mb-4 relative z-10 text-center">Not sure where to start?</h2>
+            <p className="text-lg md:text-xl text-[#B0B0B0] mb-2 max-w-2xl mx-auto relative z-10 text-center">Start with an honest 20-minute conversation.</p>
+            <p className="text-sm md:text-base text-[#777] mb-10 max-w-xl mx-auto relative z-10 text-center">We&apos;ll look at your product, your idea, and your target platforms and tell you exactly what needs to happen before you launch.</p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+            <div className="flex flex-row flex-wrap items-center justify-center gap-3 relative z-10">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/schedule" className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#1ABC9C] text-[#0F3D3E] font-bold hover:bg-[#159a80] transition-all border border-[#1ABC9C]">
+                <Link href="/schedule" className="inline-flex items-center px-7 py-3.5 rounded-full bg-[#1ABC9C] text-[#0F3D3E] font-bold text-sm hover:bg-[#159a80] transition-all border border-[#1ABC9C] whitespace-nowrap">
                   Let&apos;s Get You Started
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/#gallery" className="w-full sm:w-auto px-8 py-4 rounded-full bg-transparent text-white font-medium hover:bg-[#1F1F1F] transition-all border border-[#333]">
+                <Link href="/#gallery" className="inline-flex items-center px-7 py-3.5 rounded-full bg-transparent text-white font-medium text-sm hover:bg-[#1F1F1F] transition-all border border-[#333] whitespace-nowrap">
                   See Our Work First
                 </Link>
               </motion.div>
             </div>
+
           </motion.div>
         </div>
       </motion.section>

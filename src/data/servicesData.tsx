@@ -21,19 +21,43 @@ export type ServiceItem = {
     title: string;
     subtitle: string;
     shortDesc: string;
-    detailedDescription: string[]; // For paragraphs on the detailed page
+    detailedDescription: string[];
     benefits: string[];
     process: { title: string; description: string }[];
-    features: string[]; // specifically for the services/page.tsx summary card
+    features: string[];
 };
 
 export const servicesData: ServiceItem[] = [
+    {
+        id: "web",
+        icon: <Globe className="w-12 h-12 text-[#1ABC9C]" />,
+        title: "Website Design & Development",
+        subtitle: "Custom E-commerce Websites that Convert",
+        shortDesc: "Your website is often the first and only chance to earn trust. We design fast, credible sites that turn visitors into customers, not just another tab they close.",
+        detailedDescription: [
+            "A fast, beautifully designed digital storefront establishes instant authority. We develop high-performance e-commerce platforms extending from heavily customized Shopify Plus setups to entirely custom, headless commerce applications built on Next.js, React, and Node.js.",
+            "We prioritize mobile-first Core Web Vitals, implementing advanced CSS animations with Framer Motion, GSAP, and robust backend integrations on Vercel/AWS scalable infrastructure. Our goal is sub-second load times and zero-friction checkout funnels."
+        ],
+        features: ["Shopify Plus Customization", "Headless React/Next.js Apps", "Framer Motion Micro-interactions", "Advanced CRO (Conversion Optimization)", "Vercel Edge Deployment"],
+        benefits: [
+            "A completely bespoke, premium digital aesthetic tailored strictly to your brand guidelines.",
+            "Lightning-fast Edge/Server-Side rendered pages for peak SEO and minimal bounce rates.",
+            "Extensively tested specific checkout UI/UX flows engineered to reduce friction.",
+            "Enterprise-scale architecture capable of easily handling intense viral traffic spikes."
+        ],
+        process: [
+            { title: "Figma UI/UX Prototyping", description: "Wireframing user intent flows and designing pixel-perfect mockups." },
+            { title: "Frontend Engineering", description: "Building responsive, modern, highly animated interfaces in React/Next.js." },
+            { title: "Backend/CMS Integration", description: "Connecting databases, Shopify Liquid, headless inventory, and payment gateways." },
+            { title: "QA & Optimization", description: "Rigorous cross-browser testing, SEO crawling, and lighthouse speed tuning." }
+        ]
+    },
     {
         id: "marketplace",
         icon: <ShoppingCart className="w-12 h-12 text-[#1ABC9C]" />,
         title: "Marketplace Setup & Onboarding",
         subtitle: "Launch Your Brand on Amazon, Flipkart, Nykaa, Ajio, Tata Cliq, Aza, Pernia, Sverve and more.",
-        shortDesc: "We handle the setup you didn't know was complicated — variants, category rules, backend keywords, and platform-specific requirements. You won't lose weeks figuring out why your listing got rejected.",
+        shortDesc: "We handle the setup you didn't know was complicated variants, category rules, backend keywords, and platform-specific requirements. You won't lose weeks figuring out why your listing got rejected.",
         detailedDescription: [
             "We handle the end-to-end operational heavy lifting required to get your brand live across India's top e-commerce ecosystems, including Amazon, Flipkart, Myntra, Nykaa, Ajio, Tata Cliq, JioMart, Aza, Pernia's Pop-Up Shop, and Sverve.",
             "Our team manages the complexities of brand registry, GTIN exemptions, category gating, and platform-specific compliance. We structure your initial product catalog to meet the exact indexing criteria required by each unique algorithm, ensuring your brand launches smoothly without rejection delays."
@@ -53,35 +77,11 @@ export const servicesData: ServiceItem[] = [
         ]
     },
     {
-        id: "marketing",
-        icon: <Megaphone className="w-12 h-12 text-[#1ABC9C]" />,
-        title: "Marketing Strategy",
-        subtitle: "Explosive Growth through Multi-Channel Campaigns",
-        shortDesc: "We plan your launches, not just your ads — product drops, seasonal pushes, restocks. A content and ad calendar built around your actual business cycle.",
-        detailedDescription: [
-            "We deploy high ROI performance marketing architectures utilizing Google Ads (Search, Shopping, Display, Performance Max), Meta Ads (Facebook & Instagram), TikTok Ads, and Programmatic networks like Criteo.",
-            "Beyond sheer ad spend, we integrate deeply vetted, niche-specific Influencer Marketing pipelines. By fusing data-driven split-testing with authentic creator social proof, we build sustainable customer acquisition funnels that scale profitably."
-        ],
-        features: ["Google Performance Max", "Advanced Meta Pixel Tracking", "Influencer Pipeline Management", "Retargeting Architectures", "Conversion API (CAPI) Integration"],
-        benefits: [
-            "Maximized Return on Ad Spend (ROAS) and lowered CPA.",
-            "Diversified traffic sources to reduce reliance on a single platform.",
-            "Granular audience targeting using lookalike and predictive models.",
-            "Authentic social proof and credibility through structured influencer partnerships."
-        ],
-        process: [
-            { title: "Market & Audience Mapping", description: "Identifying your highly profitable customer segments using predictive data." },
-            { title: "Conversion Architecture", description: "Implementing Meta CAPI and Google Tag Manager for flawless tracking." },
-            { title: "Creative & Ad Launch", description: "Deploying high-converting diverse creatives across targeted ad networks." },
-            { title: "Continuous Optimization", description: "Aggressive A/B testing, bid adjustments, and budget scaling based on real-time ROAS." }
-        ]
-    },
-    {
         id: "logistics",
         icon: <Truck className="w-12 h-12 text-[#1ABC9C]" />,
         title: "Logistics Onboarding",
         subtitle: "Seamless Shipping and Fulfillment Integration",
-        shortDesc: "Returns, expectations, and trust — set up right from day one. We help new brands build a return and rating strategy that protects credibility before problems start.",
+        shortDesc: "Returns and delivery are where trust is won or lost. We help new brands set up return policies, rating strategy, and fulfillment expectations that protect your credibility before the first bad review can happen.",
         detailedDescription: [
             "Fulfillment is the backbone of e-commerce. A poor delivery experience will break your brand, regardless of how good the product is. We consult and integrate your technical stack tightly with premium logistics aggregators and carriers.",
             "We facilitate automated integration with top-tier partners including Merchant, DTDC, Shiprocket, Delhivery, Xpressbees, Shadowfax, Blue Dart, and Ecom Express. We focus heavily on minimizing RTOs and automating NDR (Non-Delivery Report) management."
@@ -98,6 +98,30 @@ export const servicesData: ServiceItem[] = [
             { title: "Platform Integration", description: "Linking the courier API dashboards directly to your Shopify/custom CMS." },
             { title: "Workflow Automation", description: "Setting up automated label generation, manifesting, and pickup scheduling." },
             { title: "RTO Management", description: "Implementing verified COD checks and automated NDR follow-up systems." }
+        ]
+    },
+    {
+        id: "marketing",
+        icon: <Megaphone className="w-12 h-12 text-[#1ABC9C]" />,
+        title: "Marketing Strategy",
+        subtitle: "Explosive Growth through Multi-Channel Campaigns",
+        shortDesc: "We plan your launches, not just your ads. A content and ad calendar built around your actual product drops, seasonal pushes, and restocks so marketing works with your business, not against its timing.",
+        detailedDescription: [
+            "We deploy high ROI performance marketing architectures utilizing Google Ads (Search, Shopping, Display, Performance Max), Meta Ads (Facebook & Instagram), TikTok Ads, and Programmatic networks like Criteo.",
+            "Beyond sheer ad spend, we integrate deeply vetted, niche-specific Influencer Marketing pipelines. By fusing data-driven split-testing with authentic creator social proof, we build sustainable customer acquisition funnels that scale profitably."
+        ],
+        features: ["Google Performance Max", "Advanced Meta Pixel Tracking", "Influencer Pipeline Management", "Retargeting Architectures", "Conversion API (CAPI) Integration"],
+        benefits: [
+            "Maximized Return on Ad Spend (ROAS) and lowered CPA.",
+            "Diversified traffic sources to reduce reliance on a single platform.",
+            "Granular audience targeting using lookalike and predictive models.",
+            "Authentic social proof and credibility through structured influencer partnerships."
+        ],
+        process: [
+            { title: "Market & Audience Mapping", description: "Identifying your highly profitable customer segments using predictive data." },
+            { title: "Conversion Architecture", description: "Implementing Meta CAPI and Google Tag Manager for flawless tracking." },
+            { title: "Creative & Ad Launch", description: "Deploying high-converting diverse creatives across targeted ad networks." },
+            { title: "Continuous Optimization", description: "Aggressive A/B testing, bid adjustments, and budget scaling based on real-time ROAS." }
         ]
     },
     {
@@ -129,7 +153,7 @@ export const servicesData: ServiceItem[] = [
         icon: <Mail className="w-12 h-12 text-[#1ABC9C]" />,
         title: "Email Marketing Automation",
         subtitle: "Nurture Leads and Accelerate Repeat Purchases",
-        shortDesc: "Strategic automated journeys that nurture leads and strengthen customer relationships.",
+        shortDesc: "Automated journeys that reach the right customer at the right moment welcome flows, abandoned cart recovery, and win-back campaigns that turn one-time buyers into repeat ones.",
         detailedDescription: [
             "Your email list is a high-margin asset you fully own. Using enterprise-grade ESPs like Klaviyo, Mailchimp, Omnisend, and Brevo, we build sophisticated architectures that drive baseline revenue entirely on autopilot.",
             "By implementing strict RFM (Recency, Frequency, Monetary) dynamic segmentation and strategic multi-trigger flow journeys—ranging from robust welcome series to multi-step cart abandonment and targeted win-back sequences—we massively increase Customer Lifetime Value (LTV)."
@@ -153,7 +177,7 @@ export const servicesData: ServiceItem[] = [
         icon: <MessageSquare className="w-12 h-12 text-[#1ABC9C]" />,
         title: "WhatsApp Marketing Campaigns",
         subtitle: "Direct Engagement for Higher Conversions",
-        shortDesc: "Targeted broadcast promotions and automated messaging to improve retention.",
+        shortDesc: "Direct, personal, and hard to ignore. Targeted broadcasts and automated messaging that keep customers engaged and coming back without feeling like spam.",
         detailedDescription: [
             "WhatsApp boasts an average open rate of 98%, making it the most critical direct channel in regions like India. We integrate the official WhatsApp Business API using platforms like Interakt, Wati, Gupshup, or LimeChat.",
             "We handle the paperwork for official Green-Tick verification and deploy automated conversational commerce logic. This includes abandoned cart recovery via WhatsApp, automated shipping updates, and highly targeted, interactive promotional broadcasts with rich media catalogs."
@@ -173,35 +197,11 @@ export const servicesData: ServiceItem[] = [
         ]
     },
     {
-        id: "web",
-        icon: <Globe className="w-12 h-12 text-[#1ABC9C]" />,
-        title: "Website Design & Development",
-        subtitle: "Custom E-commerce Websites that Convert",
-        shortDesc: "Custom business websites designed to improve credibility and convert visitors.",
-        detailedDescription: [
-            "A fast, beautifully designed digital storefront establishes instant authority. We develop high-performance e-commerce platforms extending from heavily customized Shopify Plus setups to entirely custom, headless commerce applications built on Next.js, React, and Node.js.",
-            "We prioritize mobile-first Core Web Vitals, implementing advanced CSS animations with Framer Motion, GSAP, and robust backend integrations on Vercel/AWS scalable infrastructure. Our goal is sub-second load times and zero-friction checkout funnels."
-        ],
-        features: ["Shopify Plus Customization", "Headless React/Next.js Apps", "Framer Motion Micro-interactions", "Advanced CRO (Conversion Optimization)", "Vercel Edge Deployment"],
-        benefits: [
-            "A completely bespoke, premium digital aesthetic tailored strictly to your brand guidelines.",
-            "Lightning-fast Edge/Server-Side rendered pages for peak SEO and minimal bounce rates.",
-            "Extensively tested specific checkout UI/UX flows engineered to reduce friction.",
-            "Enterprise-scale architecture capable of easily handling intense viral traffic spikes."
-        ],
-        process: [
-            { title: "Figma UI/UX Prototyping", description: "Wireframing user intent flows and designing pixel-perfect mockups." },
-            { title: "Frontend Engineering", description: "Building responsive, modern, highly animated interfaces in React/Next.js." },
-            { title: "Backend/CMS Integration", description: "Connecting databases, Shopify Liquid, headless inventory, and payment gateways." },
-            { title: "QA & Optimization", description: "Rigorous cross-browser testing, SEO crawling, and lighthouse speed tuning." }
-        ]
-    },
-    {
         id: "brand-identity",
         icon: <Palette className="w-12 h-12 text-[#1ABC9C]" />,
         title: "Brand Identity",
         subtitle: "Crafting Memorable and Distinct Brand Experiences",
-        shortDesc: "Crafting memorable visual identities and guidelines that resonate with your target audience.",
+        shortDesc: "More than a logo a visual identity and set of guidelines that make your brand instantly recognizable and consistent everywhere it shows up.",
         detailedDescription: [
             "Commoditized products compete on price; distinct brands compete on value. We construct cohesive, psychological visual identities from the ground up using Adobe Creative Suite, Figma, and After Effects for motion graphics.",
             "Our agency delivers comprehensive brand ecosystems. This includes bespoke logo architecture, strict typographic and color systems, brand voice positioning documentation, and scalable digital/print collateral guidelines that guarantee omni-channel consistency."
