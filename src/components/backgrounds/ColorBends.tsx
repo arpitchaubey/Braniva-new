@@ -247,8 +247,16 @@ export default function ColorBends({
     let isVisible = false;
     let io: IntersectionObserver | null = null;
 
-    const loop = () => {
+    let lastFrameTime = 0;
+    const loop = (timestamp?: number) => {
       if (!isVisible) return;
+      if (timestamp && typeof window !== 'undefined' && window.innerWidth < 768) {
+        if (timestamp - lastFrameTime < 30) {
+          rafRef.current = requestAnimationFrame(loop);
+          return;
+        }
+        lastFrameTime = timestamp;
+      }
       const dt = clock.getDelta();
       const elapsed = clock.elapsedTime;
       material.uniforms.uTime.value = elapsed;
@@ -267,6 +275,7 @@ export default function ColorBends({
       renderer.render(scene, camera);
       rafRef.current = requestAnimationFrame(loop);
     };
+
 
     if (typeof IntersectionObserver !== 'undefined') {
       io = new IntersectionObserver(([entry]) => {

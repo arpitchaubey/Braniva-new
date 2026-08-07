@@ -117,10 +117,10 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <div className="flex -space-x-2 overflow-hidden shrink-0">
-            <img className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=aman" alt="Founder 1" />
-            <img className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=vikram" alt="Founder 2" />
-            <img className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=amit" alt="Founder 3" />
-            <img className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=arpit" alt="Founder 4" />
+            <img width={28} height={28} loading="lazy" decoding="async" className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=aman" alt="Founder 1" />
+            <img width={28} height={28} loading="lazy" decoding="async" className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=vikram" alt="Founder 2" />
+            <img width={28} height={28} loading="lazy" decoding="async" className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=amit" alt="Founder 3" />
+            <img width={28} height={28} loading="lazy" decoding="async" className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=arpit" alt="Founder 4" />
           </div>
           <div className="text-center xs:text-left flex items-center justify-center gap-2 text-xs flex-wrap">
             <span className="text-[#1ABC9C] font-bold">★★★★★</span>
