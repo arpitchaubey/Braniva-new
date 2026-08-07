@@ -4,35 +4,56 @@ import { useEffect } from "react";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    // Defer Lenis init until after paint so it doesn't block LCP/TBT
-    const timer = setTimeout(async () => {
-      const { default: Lenis } = await import("lenis");
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: "vertical",
-        gestureOrientation: "vertical",
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
-      });
+    let lenis: any = null;
+    let animationFrameId: number | null = null;
+    let isCleanedUp = false;
 
-      let animationFrameId: number;
+    const initLenis = async () => {
+      try {
+        const { default: Lenis } = await import("lenis");
+        if (isCleanedUp) return;
 
-      function raf(time: number) {
-        lenis.raf(time);
+        lenis = new Lenis({
+          duration: 1.0,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: "vertical",
+          gestureOrientation: "vertical",
+          smoothWheel: true,
+          wheelMultiplier: 1,
+          touchMultiplier: 1.5,
+          syncTouch: false,
+        });
+
+        function raf(time: number) {
+          if (lenis) {
+            lenis.raf(time);
+            animationFrameId = requestAnimationFrame(raf);
+          }
+        }
+
         animationFrameId = requestAnimationFrame(raf);
+      } catch (e) {
+        console.warn("Smooth scroll initialization skipped:", e);
       }
+    };
 
-      animationFrameId = requestAnimationFrame(raf);
-
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(() => initLenis(), { timeout: 1500 });
       return () => {
-        cancelAnimationFrame(animationFrameId);
-        lenis.destroy();
+        isCleanedUp = true;
+        window.cancelIdleCallback(idleId);
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        if (lenis) lenis.destroy();
       };
-    }, 2000); // Wait 2s after paint before initialising smooth scroll
-
-    return () => clearTimeout(timer);
+    } else {
+      const timerId = setTimeout(() => initLenis(), 1000);
+      return () => {
+        isCleanedUp = true;
+        clearTimeout(timerId);
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        if (lenis) lenis.destroy();
+      };
+    }
   }, []);
 
   return <>{children}</>;

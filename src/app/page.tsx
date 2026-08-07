@@ -41,37 +41,47 @@ export default function Home() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(testimonialsData);
 
   useEffect(() => {
-    fetch("/api/blogs?limit=3")
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) setBlogs(data);
-      })
-      .catch(err => console.error(err));
+    const loadDynamicData = () => {
+      fetch("/api/blogs?limit=3")
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) setBlogs(data);
+        })
+        .catch(err => console.error(err));
 
-    fetch("/api/faqs?limit=5")
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) setFaqs(data);
-      })
-      .catch(err => console.error(err));
+      fetch("/api/faqs?limit=5")
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) setFaqs(data);
+        })
+        .catch(err => console.error(err));
 
-    fetch("/api/gallery")
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
-          setGalleryItems(data);
-        }
-      })
-      .catch(err => console.error(err));
+      fetch("/api/gallery")
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) {
+            setGalleryItems(data);
+          }
+        })
+        .catch(err => console.error(err));
 
-    fetch("/api/testimonials")
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
-          setTestimonials(data);
-        }
-      })
-      .catch(err => console.error(err));
+      fetch("/api/testimonials")
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) {
+            setTestimonials(data);
+          }
+        })
+        .catch(err => console.error(err));
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(loadDynamicData, { timeout: 2500 });
+      return () => window.cancelIdleCallback(idleId);
+    } else {
+      const timerId = setTimeout(loadDynamicData, 2000);
+      return () => clearTimeout(timerId);
+    }
   }, []);
 
   return (
@@ -223,13 +233,9 @@ export default function Home() {
                     </>
                   )}
                 </div>
-                <motion.div
-                  className="w-9 h-9 rounded-full bg-[#0F3D3E] border-2 border-[#1ABC9C] flex items-center justify-center text-white text-sm font-bold z-10 cursor-pointer flex-shrink-0"
-                  whileHover={{ scale: 1.25, rotate: 360 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                >
+                <div className="w-9 h-9 rounded-full bg-[#0F3D3E] border-2 border-[#1ABC9C] flex items-center justify-center text-white text-sm font-bold z-10 flex-shrink-0">
                   {step.num}
-                </motion.div>
+                </div>
                 <div className="pl-10">
                   {i % 2 !== 0 && (
                     <>
@@ -244,14 +250,14 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* GALLERY GRID SECTION (Dynamically Loaded & Offscreen Content Visibility) */}
-      <div className="w-full content-auto">
+      {/* GALLERY GRID SECTION */}
+      <div className="w-full">
         <GallerySection galleryItems={galleryItems} />
       </div>
 
       {/* RESULTS SECTION */}
       <motion.section
-        className="w-full bg-[#1ABC9C] py-20 text-[#052222] shadow-2xl relative overflow-hidden content-auto"
+        className="w-full bg-[#1ABC9C] py-20 text-[#052222] shadow-2xl relative overflow-hidden"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -266,9 +272,7 @@ export default function Home() {
         >
           <motion.div
             variants={scrollItemVariants}
-            whileHover={{ scale: 1.05, y: -4 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="p-6 cursor-pointer"
+            className="p-6 cursor-pointer hover:-translate-y-1 transition-transform duration-300"
           >
             <h3 className="text-5xl lg:text-7xl font-black font-sora mb-3 text-[#031515] tracking-tight">50+</h3>
             <p className="text-base font-bold text-[#052222]/90 max-w-xs mx-auto leading-snug">Brands launched from zero, across categories</p>
@@ -276,9 +280,7 @@ export default function Home() {
 
           <motion.div
             variants={scrollItemVariants}
-            whileHover={{ scale: 1.05, y: -4 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="p-6 border-t md:border-t-0 md:border-l border-[#031515]/20 cursor-pointer"
+            className="p-6 border-t md:border-t-0 md:border-l border-[#031515]/20 cursor-pointer hover:-translate-y-1 transition-transform duration-300"
           >
             <h3 className="text-5xl lg:text-7xl font-black font-sora mb-3 text-[#031515] tracking-tight">7</h3>
             <p className="text-base font-bold text-[#052222]/90 max-w-xs mx-auto leading-snug">Platforms we know and we&apos;ll tell you which one fits first</p>
@@ -286,9 +288,7 @@ export default function Home() {
 
           <motion.div
             variants={scrollItemVariants}
-            whileHover={{ scale: 1.05, y: -4 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="p-6 border-t md:border-t-0 md:border-l border-[#031515]/20 cursor-pointer"
+            className="p-6 border-t md:border-t-0 md:border-l border-[#031515]/20 cursor-pointer hover:-translate-y-1 transition-transform duration-300"
           >
             <h3 className="text-5xl lg:text-7xl font-black font-sora mb-3 text-[#031515] tracking-tight">30</h3>
             <p className="text-base font-bold text-[#052222]/90 max-w-xs mx-auto leading-snug">Days avg from first call to your first live listing</p>
@@ -300,7 +300,7 @@ export default function Home() {
       {blogs.length > 0 && (
         <motion.section
           id="blog-feed"
-          className="w-full bg-[#0A0A0A] py-24 content-auto"
+          className="w-full bg-[#0A0A0A] py-24"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -322,11 +322,9 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {blogs.map(blog => (
-                <motion.div
+                <div
                   key={blog.id}
-                  whileHover={{ y: -6, scale: 1.015 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="group relative bg-[#1A1A1A] border border-white/5 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-[#1ABC9C]/20 transition-all duration-300"
+                  className="group relative bg-[#1A1A1A] border border-white/5 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-[#1ABC9C]/30 hover:-translate-y-1.5 transition-all duration-300 gpu-accelerated"
                 >
                   <Link href={`/blog/${blog.slug}`} className="absolute inset-0 z-20" aria-label={`Read ${blog.title}`}></Link>
                   <div>
@@ -336,7 +334,7 @@ export default function Home() {
                         alt={blog.title}
                         loading="lazy"
                         decoding="async"
-                        className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent opacity-80"></div>
                       <div className="absolute bottom-4 left-4 z-10">
@@ -375,7 +373,7 @@ export default function Home() {
                       <p className="text-[9px] text-[#666] mt-1">{blog.author_role}</p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -385,7 +383,7 @@ export default function Home() {
       {/* TESTIMONIALS SECTION */}
       <motion.section
         id="testimonials"
-        className="w-full bg-[#0A0A0A] py-24 content-auto"
+        className="w-full bg-[#0A0A0A] py-24"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -402,18 +400,10 @@ export default function Home() {
             <div className="absolute top-0 bottom-0 left-0 w-20 md:w-36 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
             <div className="absolute top-0 bottom-0 right-0 w-20 md:w-36 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
 
-            <motion.div
-              className="flex flex-none items-stretch gap-6 px-4 will-change-transform transform-gpu"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ repeat: Infinity, ease: "linear", duration: Math.max(25, testimonials.length * 6) }}
-            >
+            <div className="flex flex-none items-stretch gap-6 px-4 animate-marquee gpu-accelerated">
               {[...testimonials, ...testimonials].map((t, idx) => (
                 <div key={`${t.id}-${idx}`} className="w-[320px] md:w-[380px] shrink-0 flex flex-col">
-                  <motion.div
-                    whileHover={{ y: -6, scale: 1.015 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="bg-[#1C1C1E] border border-[#27272A] p-8 rounded-3xl relative hover:border-[#1ABC9C]/30 transition-all duration-300 flex flex-col h-full"
-                  >
+                  <div className="bg-[#1C1C1E] border border-[#27272A] p-8 rounded-3xl relative hover:border-[#1ABC9C]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full gpu-accelerated">
                     <div className="flex items-center gap-1 mb-6 text-[#1ABC9C]">
                       {[...Array(t.rating || 5)].map((_, i) => (
                         <span key={i} className="text-lg">★</span>
@@ -433,20 +423,18 @@ export default function Home() {
                         <p className="text-[10px] text-[#666] mt-1.5">{t.role}</p>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         ) : (
           <div className="max-w-7xl mx-auto px-6">
             <div className={`grid grid-cols-1 ${testimonials.length === 1 ? 'max-w-md mx-auto' : testimonials.length === 2 ? 'md:grid-cols-2 max-w-4xl mx-auto' : testimonials.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-8`}>
               {testimonials.map((t, idx) => (
-                <motion.div
+                <div
                   key={t.id || idx}
-                  whileHover={{ y: -6, scale: 1.015 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-[#1C1C1E] border border-[#27272A] p-8 rounded-3xl relative hover:border-[#1ABC9C]/30 transition-all duration-300 flex flex-col"
+                  className="bg-[#1C1C1E] border border-[#27272A] p-8 rounded-3xl relative hover:border-[#1ABC9C]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col gpu-accelerated"
                 >
                   <div className="flex items-center gap-1 mb-6 text-[#1ABC9C]">
                     {[...Array(t.rating || 5)].map((_, i) => (
@@ -467,15 +455,15 @@ export default function Home() {
                       <p className="text-[10px] text-[#666] mt-1.5">{t.role}</p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         )}
       </motion.section>
 
-      {/* DYNAMIC FAQ SECTION (Isolated State & Granular Code Splitting) */}
-      <div className="w-full content-auto">
+      {/* DYNAMIC FAQ SECTION */}
+      <div className="w-full">
         <FaqSection faqs={faqs} />
       </div>
 

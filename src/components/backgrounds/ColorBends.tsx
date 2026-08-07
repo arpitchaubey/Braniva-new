@@ -250,8 +250,8 @@ export default function ColorBends({
     let lastFrameTime = 0;
     const loop = (timestamp?: number) => {
       if (!isVisible) return;
-      if (timestamp && typeof window !== 'undefined' && window.innerWidth < 768) {
-        if (timestamp - lastFrameTime < 30) {
+      if (timestamp) {
+        if (timestamp - lastFrameTime < 22) {
           rafRef.current = requestAnimationFrame(loop);
           return;
         }

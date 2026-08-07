@@ -75,20 +75,11 @@ export async function GET(req: Request) {
         if (process.env.DATABASE_URL) {
             try {
                 const sql = neon(process.env.DATABASE_URL);
-                const dbFaqs = await sql`SELECT * FROM faqs ORDER BY sort_order ASC, id ASC`;
+                let dbFaqs = await sql`SELECT * FROM faqs ORDER BY sort_order ASC, id ASC`;
 
-                // If DB has old data (not 18 items or question differs) or reset requested, resync
-                const dbMatchesMaster = dbFaqs.length === localFaqs.length && 
-                    dbFaqs.length > 0 && 
-                    dbFaqs[0]?.question?.trim() === localFaqs[0]?.question?.trim();
-
-                if (!dbMatchesMaster || forceReset) {
+                if (dbFaqs.length === 0 || forceReset) {
                     await syncNeonWithMasterFaqs(sql);
-                    const freshDbFaqs = await sql`SELECT * FROM faqs ORDER BY sort_order ASC, id ASC`;
-                    if (parsedLimit && !isNaN(parsedLimit)) {
-                        return NextResponse.json(freshDbFaqs.slice(0, parsedLimit));
-                    }
-                    return NextResponse.json(freshDbFaqs);
+                    dbFaqs = await sql`SELECT * FROM faqs ORDER BY sort_order ASC, id ASC`;
                 }
 
                 if (parsedLimit && !isNaN(parsedLimit)) {

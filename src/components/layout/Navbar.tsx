@@ -49,8 +49,8 @@ export default function Navbar() {
                     <Link href="/" className="flex items-end gap-2.5 group" onClick={() => setIsMobileMenuOpen(false)}>
                         <motion.div
                             className="relative w-7 h-7 md:w-9 md:h-9"
-                            whileHover={{ rotate: [0, -8, 8, -4, 0], scale: 1.08 }}
-                            transition={{ duration: 0.5 }}
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
                         >
                             <Image src="/brand-logo.png" alt="Braniva Logo" fill className="object-contain" sizes="48px" unoptimized />
                         </motion.div>

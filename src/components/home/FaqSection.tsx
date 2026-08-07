@@ -38,11 +38,9 @@ export default function FaqSection({ faqs }: { faqs: FAQ[] }) {
           {faqs.map((faq, index) => {
             const isOpen = activeFaqIndex === index;
             return (
-              <motion.div
+              <div
                 key={faq.id}
-                whileHover={{ x: 4 }}
-                transition={{ type: "spring", stiffness: 400 }}
-                className="border border-[#27272A] bg-[#1C1C1E] rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#3F3F46]"
+                className="border border-[#27272A] bg-[#1C1C1E] rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#3F3F46] hover:translate-x-1 gpu-accelerated"
               >
                 <button
                   onClick={() => setActiveFaqIndex(isOpen ? null : index)}
@@ -73,7 +71,7 @@ export default function FaqSection({ faqs }: { faqs: FAQ[] }) {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             );
           })}
         </div>

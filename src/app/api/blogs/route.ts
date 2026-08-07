@@ -84,32 +84,15 @@ async function syncDbWithLocal(sql: any) {
             );
         `;
 
-        const defaults = readLocalBlogs();
-        // Upsert all current valid blogs
-        for (const b of defaults) {
-            await sql`
-                INSERT INTO blogs (slug, title, excerpt, content, category, read_time, date, author_name, author_role, author_avatar, image_url)
-                VALUES (${b.slug}, ${b.title}, ${b.excerpt}, ${b.content}, ${b.category}, ${b.read_time}, ${b.date}, ${b.author_name}, ${b.author_role}, ${b.author_avatar}, ${b.image_url})
-                ON CONFLICT (slug) DO UPDATE SET
-                    title = EXCLUDED.title,
-                    excerpt = EXCLUDED.excerpt,
-                    content = EXCLUDED.content,
-                    category = EXCLUDED.category,
-                    read_time = EXCLUDED.read_time,
-                    date = EXCLUDED.date,
-                    author_name = EXCLUDED.author_name,
-                    author_role = EXCLUDED.author_role,
-                    author_avatar = EXCLUDED.author_avatar,
-                    image_url = EXCLUDED.image_url;
-            `;
-        }
-
-        // Clean up old sample posts if any exist
-        const validSlugs = defaults.map(b => b.slug);
-        const existingPosts = await sql`SELECT id, slug FROM blogs`;
-        for (const post of existingPosts) {
-            if (!validSlugs.includes(post.slug)) {
-                await sql`DELETE FROM blogs WHERE id = ${post.id}`;
+        const countRes = await sql`SELECT COUNT(*)::int as count FROM blogs`;
+        if (countRes[0]?.count === 0) {
+            const defaults = readLocalBlogs();
+            for (const b of defaults) {
+                await sql`
+                    INSERT INTO blogs (slug, title, excerpt, content, category, read_time, date, author_name, author_role, author_avatar, image_url)
+                    VALUES (${b.slug}, ${b.title}, ${b.excerpt}, ${b.content}, ${b.category}, ${b.read_time}, ${b.date}, ${b.author_name}, ${b.author_role}, ${b.author_avatar}, ${b.image_url})
+                    ON CONFLICT (slug) DO NOTHING;
+                `;
             }
         }
 

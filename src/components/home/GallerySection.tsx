@@ -56,7 +56,7 @@ export default function GallerySection({ galleryItems }: { galleryItems: Gallery
                   }
                 }
               }}
-              className="break-inside-avoid inline-block w-full group relative bg-[#1A1A1A] border border-white/10 rounded-3xl overflow-hidden shadow-xl hover:border-[#1ABC9C]/40 transition-all duration-300"
+              className="break-inside-avoid inline-block w-full group relative bg-[#1A1A1A] border border-white/10 rounded-3xl overflow-hidden shadow-xl hover:border-[#1ABC9C]/40 transition-all duration-300 gpu-accelerated"
             >
               <div className="relative w-full h-auto overflow-hidden bg-[#121212] rounded-3xl">
                 <img
