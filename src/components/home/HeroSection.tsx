@@ -56,36 +56,38 @@ export default function HeroSection() {
 
       <div className="w-full max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white font-sora leading-[1.12] mb-6 md:mb-8 tracking-tight"
+          className="text-[2.2rem] xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white font-sora leading-[1.15] mb-6 md:mb-8 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span>Build </span>
-          <AnimatePresence mode="popLayout">
-            <motion.span
-              key={cycleIndex}
-              className="inline-block text-[#1ABC9C]"
-              initial={{ opacity: 0, y: 40, rotateX: -90, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -40, rotateX: 90, scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              {cycleWords[cycleIndex]}
-            </motion.span>
-          </AnimatePresence>
-          <span>.</span>
+          <span className="inline-block whitespace-nowrap">
+            Build{" "}
+            <AnimatePresence mode="popLayout">
+              <motion.span
+                key={cycleIndex}
+                className="inline-block text-[#1ABC9C]"
+                initial={{ opacity: 0, y: 40, rotateX: -90, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -40, rotateX: 90, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                {cycleWords[cycleIndex]}
+              </motion.span>
+            </AnimatePresence>
+            .
+          </span>
           <br />
           <span>Scale Businesses. Drive Growth.</span>
         </motion.h1>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-[#D4D4D8] max-w-3xl mb-10 font-medium leading-relaxed"
+          className="text-sm sm:text-lg md:text-xl text-[#D4D4D8] max-w-3xl mb-10 font-medium leading-relaxed px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          Braniva is a full-service branding, Shopify development, UI/UX design, CRO, and digital marketing agency helping startups and established businesses increase conversions, grow revenue, and build memorable brands.
+          Braniva full-service branding, Shopify development, UI/UX, CRO &amp; digital marketing. We help startups and growing businesses increase conversions, grow revenue, and build brands people remember.
         </motion.p>
 
         <motion.div
@@ -109,20 +111,20 @@ export default function HeroSection() {
 
         {/* Social Proof Trust Bar */}
         <motion.div
-          className="flex items-center gap-3 pt-6 border-t border-white/10"
+          className="flex flex-col xs:flex-row items-center justify-center gap-3 pt-6 border-t border-white/10 w-full"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <div className="flex -space-x-2 overflow-hidden">
-            <img className="inline-block h-7 w-7 rounded-full ring-2 ring-[#0A0A0A] object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=aman" alt="Founder 1" />
-            <img className="inline-block h-7 w-7 rounded-full ring-2 ring-[#0A0A0A] object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=vikram" alt="Founder 2" />
-            <img className="inline-block h-7 w-7 rounded-full ring-2 ring-[#0A0A0A] object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=amit" alt="Founder 3" />
-            <img className="inline-block h-7 w-7 rounded-full ring-2 ring-[#0A0A0A] object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=arpit" alt="Founder 4" />
+          <div className="flex -space-x-2 overflow-hidden shrink-0">
+            <img className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=aman" alt="Founder 1" />
+            <img className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=vikram" alt="Founder 2" />
+            <img className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=amit" alt="Founder 3" />
+            <img className="inline-block h-7 w-7 rounded-full object-cover" src="https://api.dicebear.com/7.x/avataaars/svg?seed=arpit" alt="Founder 4" />
           </div>
-          <div className="text-left flex items-center gap-2 text-xs">
+          <div className="text-center xs:text-left flex items-center justify-center gap-2 text-xs flex-wrap">
             <span className="text-[#1ABC9C] font-bold">★★★★★</span>
-            <span className="text-[#A1A1AA]">Trusted by 50+ D2C Founders & Sellers</span>
+            <span className="text-[#A1A1AA]">Trusted by 50+ D2C Founders &amp; Sellers</span>
           </div>
         </motion.div>
       </div>
