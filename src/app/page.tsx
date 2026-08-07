@@ -4,15 +4,18 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
+import dynamic from "next/dynamic";
 import { servicesData } from "@/data/servicesData";
 import { galleryData, GalleryItem } from "@/data/galleryData";
 import { blogsData, Blog } from "@/data/blogsData";
 import { testimonialsData, Testimonial } from "@/data/testimonialsData";
 
 import HeroSection from "@/components/home/HeroSection";
-import FaqSection from "@/components/home/FaqSection";
-import GallerySection from "@/components/home/GallerySection";
 import { scrollContainerVariants, scrollItemVariants } from "@/components/home/variants";
+
+// Granular code-splitting for heavy below-the-fold components
+const FaqSection = dynamic(() => import("@/components/home/FaqSection"));
+const GallerySection = dynamic(() => import("@/components/home/GallerySection"));
 
 type FAQ = {
   id: number;
@@ -73,12 +76,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center w-full overflow-hidden">
-      {/* HERO SECTION (Isolated state & timer) */}
+      {/* HERO SECTION (Initial Viewport) */}
       <HeroSection />
 
-      {/* SERVICES SECTION */}
+      {/* SERVICES SECTION (Below Fold - Offscreen layout optimization) */}
       <motion.section
-        className="w-full bg-[#0A0A0A] py-24"
+        className="w-full bg-[#0A0A0A] py-24 content-auto"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -131,7 +134,7 @@ export default function Home() {
 
       {/* PLATFORMS MARQUEE SECTION */}
       <motion.section
-        className="w-full bg-[#0A0A0A] py-24 overflow-hidden"
+        className="w-full bg-[#0A0A0A] py-24 overflow-hidden content-auto"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -147,7 +150,7 @@ export default function Home() {
           <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
 
           <motion.div
-            className="flex flex-none items-center gap-12 md:gap-24 whitespace-nowrap px-6 md:px-12"
+            className="flex flex-none items-center gap-12 md:gap-24 whitespace-nowrap px-6 md:px-12 will-change-transform transform-gpu"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ repeat: Infinity, ease: "linear", duration: 35 }}
           >
@@ -173,7 +176,7 @@ export default function Home() {
 
       {/* PROCESS SECTION */}
       <motion.section
-        className="w-full bg-[#0A0A0A] py-24"
+        className="w-full bg-[#0A0A0A] py-24 content-auto"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -241,12 +244,14 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* GALLERY GRID SECTION (Isolated Component, layout="position" removed) */}
-      <GallerySection galleryItems={galleryItems} />
+      {/* GALLERY GRID SECTION (Dynamically Loaded & Offscreen Content Visibility) */}
+      <div className="w-full content-auto">
+        <GallerySection galleryItems={galleryItems} />
+      </div>
 
       {/* RESULTS SECTION */}
       <motion.section
-        className="w-full bg-[#1ABC9C] py-20 text-[#052222] shadow-2xl relative overflow-hidden"
+        className="w-full bg-[#1ABC9C] py-20 text-[#052222] shadow-2xl relative overflow-hidden content-auto"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -295,7 +300,7 @@ export default function Home() {
       {blogs.length > 0 && (
         <motion.section
           id="blog-feed"
-          className="w-full bg-[#0A0A0A] py-24"
+          className="w-full bg-[#0A0A0A] py-24 content-auto"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -380,7 +385,7 @@ export default function Home() {
       {/* TESTIMONIALS SECTION */}
       <motion.section
         id="testimonials"
-        className="w-full bg-[#0A0A0A] py-24"
+        className="w-full bg-[#0A0A0A] py-24 content-auto"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -398,7 +403,7 @@ export default function Home() {
             <div className="absolute top-0 bottom-0 right-0 w-20 md:w-36 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
 
             <motion.div
-              className="flex flex-none items-stretch gap-6 px-4"
+              className="flex flex-none items-stretch gap-6 px-4 will-change-transform transform-gpu"
               animate={{ x: ["0%", "-50%"] }}
               transition={{ repeat: Infinity, ease: "linear", duration: Math.max(25, testimonials.length * 6) }}
             >
@@ -469,12 +474,14 @@ export default function Home() {
         )}
       </motion.section>
 
-      {/* DYNAMIC FAQ SECTION (Isolated state) */}
-      <FaqSection faqs={faqs} />
+      {/* DYNAMIC FAQ SECTION (Isolated State & Granular Code Splitting) */}
+      <div className="w-full content-auto">
+        <FaqSection faqs={faqs} />
+      </div>
 
       {/* FINAL CTA */}
       <motion.section
-        className="w-full bg-[#0A0A0A] py-24 text-center"
+        className="w-full bg-[#0A0A0A] py-24 text-center content-auto"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}

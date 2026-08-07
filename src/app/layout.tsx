@@ -146,6 +146,7 @@ const jsonLd = {
 };
 
 import WebMCPProvider from "@/components/layout/WebMCPProvider";
+import GoogleAnalytics from "@/components/layout/GoogleAnalytics";
 
 export default function RootLayout({
   children,
@@ -159,18 +160,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.dicebear.com" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}');
-          `}
-        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -181,6 +170,7 @@ export default function RootLayout({
         className={`${inter.variable} ${sora.variable} antialiased min-h-screen flex flex-col bg-[#0A0A0A] text-white`}
       >
         <SmoothScroll>
+          <GoogleAnalytics />
           <WebMCPProvider />
           <TrafficTracker />
           <AnimatedBackground />

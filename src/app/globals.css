@@ -32,3 +32,9 @@ h5,
 h6 {
   font-family: var(--font-sora), Arial, sans-serif;
 }
+
+/* Offscreen section rendering optimization for TBT & Speed Index */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
