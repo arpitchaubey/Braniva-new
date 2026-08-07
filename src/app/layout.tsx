@@ -145,13 +145,15 @@ const jsonLd = {
   ],
 };
 
+import WebMCPProvider from "@/components/layout/WebMCPProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://api.dicebear.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://api.dicebear.com" />
@@ -175,11 +177,14 @@ export default function RootLayout({
         />
       </head>
       <body
+        suppressHydrationWarning
         className={`${inter.variable} ${sora.variable} antialiased min-h-screen flex flex-col bg-[#0A0A0A] text-white`}
       >
         <SmoothScroll>
+          <WebMCPProvider />
           <TrafficTracker />
           <AnimatedBackground />
+
           <Navbar />
           <main id="main-content" role="main" className="flex-grow z-10 relative">
             {children}

@@ -1,19 +1,56 @@
 # Braniva Robots.txt
+# https://braniva.in/robots.txt
+
 User-agent: *
 Allow: /
+# Public API endpoints accessible to search engines & AI agents
+Allow: /api/blogs
+Allow: /api/faqs
+Allow: /api/gallery
+Allow: /api/testimonials
+Allow: /api/leads
+Allow: /openapi.json
+Allow: /auth.md
+Allow: /.well-known/
 
-# Block admin panel from search engine indexing
+# Protect administrative panels & private endpoints
 Disallow: /admin
-Disallow: /api/
+Disallow: /api/admin/
+Disallow: /api/calendar/
 
+# Sitemap location
 Sitemap: https://braniva.in/sitemap.xml
 
-# Content Signals (https://contentsignals.org)
-# We allow search indexing but restrict AI training and direct AI input usage
+# AI Content Signals (https://contentsignals.org)
+# Search indexing enabled; direct model training restricted
 Content-Signal: ai-train=no, search=yes, ai-input=no
 
-# Agent Discovery (RFC 8288 / Agent Skills Discovery)
-# AI agents can find our capabilities at:
-# /.well-known/api-catalog
-# /.well-known/agent-skills/index.json
-# /.well-known/mcp/server-card.json
+# AI Search & Retrieval Bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# AI Agent Discovery & OpenAPI Standards (RFC 8288 / SEP-1649 / RFC 9727)
+# OpenAPI Specification: https://braniva.in/openapi.json
+# Agent Auth Documentation: https://braniva.in/auth.md
+# API Catalog: https://braniva.in/.well-known/api-catalog
+# Agent Skills Index: https://braniva.in/.well-known/agent-skills/index.json
+# MCP Server Card: https://braniva.in/.well-known/mcp/server-card.json
+# Agentic Commerce Protocol (ACP): https://braniva.in/.well-known/acp.json
+# Universal Commerce Protocol (UCP): https://braniva.in/.well-known/ucp
+# x402 Payment Protocol: https://braniva.in/.well-known/x402
+# DNS-AID Entrypoints: https://braniva.in/.well-known/dns-aid.json

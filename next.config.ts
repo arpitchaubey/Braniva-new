@@ -42,6 +42,10 @@ const nextConfig: NextConfig = {
               '</.well-known/api-catalog>; rel="api-catalog"',
               '</.well-known/agent-skills/index.json>; rel="agent-skills"',
               '</.well-known/mcp/server-card.json>; rel="mcp-server-card"',
+              '</openapi.json>; rel="service-desc"',
+              '</auth.md>; rel="auth-doc"',
+              '</.well-known/acp.json>; rel="acp"',
+              '</.well-known/ucp>; rel="ucp"',
             ].join(", "),
           },
           {
