@@ -122,7 +122,7 @@ export default function AdminPortal() {
         author_name: "Arpit Chaubey",
         author_role: "Founder, Braniva",
         author_avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=arpit",
-        image_url: "/gallery/amazon-store.jpg"
+        image_url: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"
     });
 
     const [showFaqForm, setShowFaqForm] = useState(false);
@@ -160,7 +160,7 @@ export default function AdminPortal() {
         title: "",
         category: "Web UI Design",
         client: "",
-        imageUrl: "/gallery/amazon-store.jpg",
+        imageUrl: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80",
         description: "",
         metrics: ""
     });
@@ -579,7 +579,7 @@ export default function AdminPortal() {
             title: item.title,
             category: item.category,
             client: item.client || "",
-            imageUrl: item.imageUrl || "/gallery/amazon-store.jpg",
+            imageUrl: item.imageUrl || "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80",
             description: item.description || "",
             metrics: item.metrics || ""
         });
@@ -632,7 +632,7 @@ export default function AdminPortal() {
                     author_name: "Arpit Chaubey",
                     author_role: "Founder, Braniva",
                     author_avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=arpit",
-                    image_url: "/gallery/amazon-store.jpg"
+                    image_url: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"
                 });
                 fetchBlogs();
             } else {
@@ -1340,7 +1340,7 @@ export default function AdminPortal() {
                                                         author_name: "Arpit Chaubey",
                                                         author_role: "Founder, Braniva",
                                                         author_avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=arpit",
-                                                        image_url: "/gallery/amazon-store.jpg"
+                                                        image_url: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"
                                                     });
                                                     setShowBlogForm(true);
                                                 }}

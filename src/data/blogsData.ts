@@ -25,7 +25,7 @@ export const blogsData: Blog[] = [
         author_name: "Arpit Chaubey",
         author_role: "Founder, Braniva",
         author_avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=arpit",
-        image_url: "/gallery/web-design.jpg",
+        image_url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
         content: `You’ve built a Shopify store. You’ve designed the products to be eye-catching. You spend hours on the logo. You run a couple ads here and there.
 
 What gives? Why aren’t your sales taking off?
@@ -100,7 +100,7 @@ Your homework for the week: go through the 7-step Shopify store optimization che
         author_name: "Arpit Chaubey",
         author_role: "Founder, Braniva",
         author_avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=arpit",
-        image_url: "/gallery/amazon-store.jpg",
+        image_url: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80",
         content: `So you've decided to sell your products on Amazon or Flipkart. Great decision - as these are marketplaces where a large percentage of India's online consumers already shop and are ready to pay.
 
 But how to get your brand listed correctly? What to do so that your brand can beat other similar products in a price war? Let's talk about what steps need to be taken for correct onboarding in marketplaces and what mistakes beginners usually make.
@@ -162,7 +162,7 @@ Many beginner sellers try to attract customers using only their knowledge and sk
         author_name: "Arpit Chaubey",
         author_role: "Founder, Braniva",
         author_avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=arpit",
-        image_url: "/gallery/social-post.png",
+        image_url: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1200&q=80",
         content: `If you've interacted with a marketing agency before, you're likely to have come across the term "performance marketing" - and, more often than not, that's as far as the explanation goes. Most business owners nod their heads at some level, and move on - only to do a google search on the topic shortly thereafter.
 
 Let's delve deeper into what performance marketing is, and more importantly, how it works.
@@ -234,7 +234,7 @@ It's also important to note that the sheer amount of testing and performance tra
         author_name: "Arpit Chaubey",
         author_role: "Founder, Braniva",
         author_avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=arpit",
-        image_url: "/gallery/logo-design.png",
+        image_url: "https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=1200&q=80",
         content: `Have you ever seen some unknown (to you) Instagram accounts or website pages and immediately gotten the feeling of who these brands are? While the first one seems to be trustworthy and professional, the second one gives the exact opposite impression.
 
 Why is that so? Why do these seemingly similar small brands, with roughly comparable budgets and target audiences, speak different languages? The reason is brand identity - and today we will discuss why it is so important and how you can improve it.
